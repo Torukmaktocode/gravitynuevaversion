@@ -1,0 +1,36 @@
+- generic [active] [ref=f65e1]:
+  - text: ──── MÁS RÁPIDO POPULAR
+  - generic [ref=f65e4]:
+    - generic [ref=f65e5]:
+      - generic [ref=f65e6]: // Solicitar Demo
+      - heading "AGENDAR DEMO" [level=2] [ref=f65e7]
+      - paragraph [ref=f65e8]: Descubre cómo Gravity puede transformar tu equipo comercial.
+    - generic [ref=f65e11]:
+      - generic [ref=f65e12]:
+        - generic [ref=f65e13]:
+          - text: Nombre completo
+          - textbox "Ej. Juan Pérez" [ref=f65e14]
+        - generic [ref=f65e15]:
+          - text: Email corporativo
+          - textbox "tu@empresa.com" [ref=f65e16]
+      - generic [ref=f65e17]:
+        - generic [ref=f65e18]:
+          - text: Teléfono
+          - textbox "+51 999 888 777" [ref=f65e19]
+        - generic [ref=f65e20]:
+          - text: Nombre de la empresa
+          - textbox "Ej. TechCorp S.A.C." [ref=f65e21]
+      - generic [ref=f65e22]:
+        - text: Tamaño del equipo comercial
+        - combobox [ref=f65e23] [cursor=pointer]:
+          - option "— Selecciona —" [disabled] [selected]
+          - option "1 - 5 vendedores"
+          - option "6 - 20 vendedores"
+          - option "21 - 50 vendedores"
+          - option "Más de 50 vendedores"
+      - generic [ref=f65e24]:
+        - text: Mensaje
+        - textbox "Cuéntanos sobre tu equipo y qué desafíos enfrentan..." [ref=f65e25]
+      - button "ENVIAR SOLICITUD" [ref=f65e26]
+    - link "← Volver al inicio" [ref=f65e31] [cursor=pointer]:
+      - /url: /

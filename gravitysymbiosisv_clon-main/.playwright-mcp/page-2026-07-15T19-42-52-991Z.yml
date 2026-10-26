@@ -1,0 +1,72 @@
+- generic [active] [ref=f71e1]:
+  - generic [ref=f71e2]:
+    - navigation [ref=f71e4]:
+      - link "GRΛVITY SYMBIOSIS" [ref=f71e5] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f71e6]: GRΛVITY
+        - generic [ref=f71e7]: SYMBIOSIS
+      - list [ref=f71e8]:
+        - listitem [ref=f71e9]:
+          - link "Problema" [ref=f71e10] [cursor=pointer]:
+            - /url: "#problem"
+        - listitem [ref=f71e11]:
+          - link "Módulos" [ref=f71e12] [cursor=pointer]:
+            - /url: "#modules"
+        - listitem [ref=f71e13]:
+          - link "Symbiosis" [ref=f71e14] [cursor=pointer]:
+            - /url: "#symbiosis"
+        - listitem [ref=f71e15]:
+          - link "Precio" [ref=f71e16] [cursor=pointer]:
+            - /url: "#pricing"
+      - generic [ref=f71e17]:
+        - link "Iniciar Sesión" [ref=f71e18] [cursor=pointer]:
+          - /url: /login
+        - link "Solicitar Demo" [ref=f71e19]:
+          - /url: /request-demo
+    - generic [ref=f71e22]:
+      - generic [ref=f71e23]:
+        - generic [ref=f71e24]: // Términos
+        - heading "TÉRMINOS Y CONDICIONES" [level=2] [ref=f71e25]
+      - generic [ref=f71e28]:
+        - paragraph [ref=f71e29]:
+          - strong [ref=f71e30]: "Última actualización:"
+          - text: Julio 2026
+        - paragraph [ref=f71e31]: Al acceder y utilizar la plataforma Gravity Symbiosis AI, aceptas los siguientes términos y condiciones. Si no estás de acuerdo con alguno de estos términos, no debes utilizar nuestros servicios.
+        - heading "1. Servicio" [level=3] [ref=f71e32]
+        - paragraph [ref=f71e33]: Gravity proporciona una plataforma SaaS de entrenamiento y coaching de ventas basada en inteligencia artificial. Nos reservamos el derecho de modificar, suspender o descontinuar cualquier funcionalidad del servicio en cualquier momento.
+        - heading "2. Cuentas de usuario" [level=3] [ref=f71e34]
+        - paragraph [ref=f71e35]: Eres responsable de mantener la confidencialidad de tus credenciales de acceso y de todas las actividades que ocurran bajo tu cuenta. Debes notificarnos inmediatamente sobre cualquier uso no autorizado.
+        - heading "3. Propiedad intelectual" [level=3] [ref=f71e36]
+        - paragraph [ref=f71e37]: Todo el contenido, diseño, código, algoritmos y materiales de la plataforma son propiedad exclusiva de Gravity Symbiosis AI o sus licenciantes. No está permitida la reproducción, distribución o modificación sin autorización expresa.
+        - heading "4. Limitación de responsabilidad" [level=3] [ref=f71e38]
+        - paragraph [ref=f71e39]: Gravity no será responsable por daños indirectos, incidentales o consecuentes derivados del uso o la imposibilidad de usar nuestros servicios, incluso si se nos ha informado de la posibilidad de tales daños.
+        - heading "5. Legislación aplicable" [level=3] [ref=f71e40]
+        - paragraph [ref=f71e41]: Estos términos se rigen por las leyes de la República del Perú. Cualquier disputa será resuelta en los tribunales de Lima, Perú.
+      - link "← Volver al inicio" [ref=f71e43] [cursor=pointer]:
+        - /url: /
+    - text: ──── MÁS RÁPIDO POPULAR
+    - generic [ref=f71e44]:
+      - link "↑ VOLVER AL INICIO" [ref=f71e45] [cursor=pointer]:
+        - /url: "#"
+      - generic [ref=f71e46]:
+        - link "Privacidad" [ref=f71e47] [cursor=pointer]:
+          - /url: /privacy
+        - link "Términos" [ref=f71e48] [cursor=pointer]:
+          - /url: /terms
+        - link "Blog" [ref=f71e49] [cursor=pointer]:
+          - /url: "#"
+        - link "Contacto" [ref=f71e50] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f71e51]: © 2025 Gravity AI · B2B SaaS
+  - generic:
+    - button "Close" [ref=f71e52] [cursor=pointer]
+    - main [ref=f71e53]:
+      - list [ref=f71e55]:
+        - listitem:
+          - list
+        - listitem [ref=f71e56]:
+          - list [ref=f71e57]:
+            - listitem [ref=f71e58]:
+              - generic [ref=f71e59]: "[ESLint] 'showLandingSubpage' is defined but never used. (@typescript-eslint/no-unused-vars)"
+              - generic [ref=f71e60]: /Users/whiz/Workspace/gravitysymbiosisv1/frontend/src/app.ts:74:10
+              - code [ref=f71e62]: "72 | const LANDING_SUBPAGES = ['view-request-demo', 'view-privacy', 'view-terms', 'view-contact']; 73 | > 74 | function showLandingSubpage(id: string) { | ^^^^^^^^^^^^^^^^^^ 75 | LANDING_SUBPAGES.forEach(sp => { 76 | const el = document.getElementById(sp); 77 | if (el) { el.classList.add('hidden'); }"

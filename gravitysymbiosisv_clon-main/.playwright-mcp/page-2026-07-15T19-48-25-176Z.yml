@@ -1,0 +1,59 @@
+- generic [ref=f83e2]:
+  - navigation [ref=f83e4]:
+    - link "GRΛVITY SYMBIOSIS" [ref=f83e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=f83e6]: GRΛVITY
+      - generic [ref=f83e7]: SYMBIOSIS
+    - list [ref=f83e8]:
+      - listitem [ref=f83e9]:
+        - link "Problema" [ref=f83e10] [cursor=pointer]:
+          - /url: "#problem"
+      - listitem [ref=f83e11]:
+        - link "Módulos" [ref=f83e12] [cursor=pointer]:
+          - /url: "#modules"
+      - listitem [ref=f83e13]:
+        - link "Symbiosis" [ref=f83e14] [cursor=pointer]:
+          - /url: "#symbiosis"
+      - listitem [ref=f83e15]:
+        - link "Precio" [ref=f83e16] [cursor=pointer]:
+          - /url: "#pricing"
+    - generic [ref=f83e17]:
+      - link "Iniciar Sesión" [ref=f83e18] [cursor=pointer]:
+        - /url: /login
+      - link "Solicitar Demo" [ref=f83e19]:
+        - /url: /request-demo
+  - generic [ref=f83e22]:
+    - generic [ref=f83e23]:
+      - generic [ref=f83e24]: // Privacidad
+      - heading "POLÍTICA DE PRIVACIDAD" [level=2] [ref=f83e25]
+    - generic [ref=f83e28]:
+      - paragraph [ref=f83e29]:
+        - strong [ref=f83e30]: "Última actualización:"
+        - text: Julio 2026
+      - paragraph [ref=f83e31]: En Gravity Symbiosis AI ("Gravity", "nosotros", "nuestro"), nos comprometemos a proteger tu privacidad. Esta política describe cómo recopilamos, usamos y compartimos tu información cuando utilizas nuestra plataforma de entrenamiento y coaching de ventas.
+      - heading "1. Información que recopilamos" [level=3] [ref=f83e32]
+      - paragraph [ref=f83e33]: "Recopilamos información que nos proporcionas directamente: nombre, correo electrónico, número de teléfono, nombre de la empresa y rol laboral. También recopilamos datos de uso de la plataforma, incluyendo grabaciones de voz, sesiones de entrenamiento, y métricas de rendimiento."
+      - heading "2. Cómo usamos tu información" [level=3] [ref=f83e34]
+      - paragraph [ref=f83e35]: "Usamos tu información para: (a) proporcionar y mejorar nuestros servicios de entrenamiento de ventas, (b) generar análisis y recomendaciones personalizadas, (c) comunicarnos contigo sobre actualizaciones del servicio, (d) cumplir con obligaciones legales."
+      - heading "3. Protección de datos" [level=3] [ref=f83e36]
+      - paragraph [ref=f83e37]: Implementamos medidas de seguridad técnicas y organizativas para proteger tu información contra acceso no autorizado, alteración, divulgación o destrucción. Todas las comunicaciones están cifradas mediante SSL/TLS.
+      - heading "4. Tus derechos" [level=3] [ref=f83e38]
+      - paragraph [ref=f83e39]: Tienes derecho a acceder, corregir, eliminar y portar tus datos personales. Puedes ejercer estos derechos contactándonos a través de los canales indicados en nuestra página de contacto.
+      - heading "5. Contacto" [level=3] [ref=f83e40]
+      - paragraph [ref=f83e41]: Si tienes preguntas sobre esta política, escríbenos a contacto@gravitysymbiosis.com
+    - link "← Volver al inicio" [ref=f83e43] [cursor=pointer]:
+      - /url: /
+  - text: ──── MÁS RÁPIDO POPULAR
+  - generic [ref=f83e44]:
+    - link "↑ VOLVER AL INICIO" [ref=f83e45] [cursor=pointer]:
+      - /url: "#"
+    - generic [ref=f83e46]:
+      - link "Privacidad" [ref=f83e47] [cursor=pointer]:
+        - /url: /privacy
+      - link "Términos" [ref=f83e48] [cursor=pointer]:
+        - /url: /terms
+      - link "Blog" [ref=f83e49] [cursor=pointer]:
+        - /url: "#"
+      - link "Contacto" [ref=f83e50] [cursor=pointer]:
+        - /url: /contact
+    - generic [ref=f83e51]: © 2025 Gravity AI · B2B SaaS

@@ -1,0 +1,59 @@
+- generic [ref=f104e2]:
+  - navigation [ref=f104e3]:
+    - link "GRΛVITY SYMBIOSIS" [ref=f104e4] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=f104e5]: GRΛVITY
+      - generic [ref=f104e6]: SYMBIOSIS
+    - list [ref=f104e7]:
+      - listitem [ref=f104e8]:
+        - link "Problema" [ref=f104e9] [cursor=pointer]:
+          - /url: "#problem"
+      - listitem [ref=f104e10]:
+        - link "Módulos" [ref=f104e11] [cursor=pointer]:
+          - /url: "#modules"
+      - listitem [ref=f104e12]:
+        - link "Symbiosis" [ref=f104e13] [cursor=pointer]:
+          - /url: "#symbiosis"
+      - listitem [ref=f104e14]:
+        - link "Precio" [ref=f104e15] [cursor=pointer]:
+          - /url: "#pricing"
+    - generic [ref=f104e16]:
+      - link "Iniciar Sesión" [ref=f104e17] [cursor=pointer]:
+        - /url: /login
+      - link "Solicitar Demo" [ref=f104e18]:
+        - /url: /request-demo
+  - generic [ref=f104e21]:
+    - generic [ref=f104e22]:
+      - generic [ref=f104e23]: // Términos
+      - heading "TÉRMINOS Y CONDICIONES" [level=2] [ref=f104e24]
+    - generic [ref=f104e27]:
+      - paragraph [ref=f104e28]:
+        - strong [ref=f104e29]: "Última actualización:"
+        - text: Julio 2026
+      - paragraph [ref=f104e30]: Al acceder y utilizar la plataforma Gravity Symbiosis AI, aceptas los siguientes términos y condiciones. Si no estás de acuerdo con alguno de estos términos, no debes utilizar nuestros servicios.
+      - heading "1. Servicio" [level=3] [ref=f104e31]
+      - paragraph [ref=f104e32]: Gravity proporciona una plataforma SaaS de entrenamiento y coaching de ventas basada en inteligencia artificial. Nos reservamos el derecho de modificar, suspender o descontinuar cualquier funcionalidad del servicio en cualquier momento.
+      - heading "2. Cuentas de usuario" [level=3] [ref=f104e33]
+      - paragraph [ref=f104e34]: Eres responsable de mantener la confidencialidad de tus credenciales de acceso y de todas las actividades que ocurran bajo tu cuenta. Debes notificarnos inmediatamente sobre cualquier uso no autorizado.
+      - heading "3. Propiedad intelectual" [level=3] [ref=f104e35]
+      - paragraph [ref=f104e36]: Todo el contenido, diseño, código, algoritmos y materiales de la plataforma son propiedad exclusiva de Gravity Symbiosis AI o sus licenciantes. No está permitida la reproducción, distribución o modificación sin autorización expresa.
+      - heading "4. Limitación de responsabilidad" [level=3] [ref=f104e37]
+      - paragraph [ref=f104e38]: Gravity no será responsable por daños indirectos, incidentales o consecuentes derivados del uso o la imposibilidad de usar nuestros servicios, incluso si se nos ha informado de la posibilidad de tales daños.
+      - heading "5. Legislación aplicable" [level=3] [ref=f104e39]
+      - paragraph [ref=f104e40]: Estos términos se rigen por las leyes de la República del Perú. Cualquier disputa será resuelta en los tribunales de Lima, Perú.
+    - link "← Volver al inicio" [ref=f104e42] [cursor=pointer]:
+      - /url: /
+  - text: ──── MÁS RÁPIDO POPULAR
+  - generic [ref=f104e43]:
+    - link "↑ VOLVER AL INICIO" [ref=f104e44] [cursor=pointer]:
+      - /url: "#"
+    - generic [ref=f104e45]:
+      - link "Privacidad" [ref=f104e46] [cursor=pointer]:
+        - /url: /privacy
+      - link "Términos" [ref=f104e47] [cursor=pointer]:
+        - /url: /terms
+      - link "Blog" [ref=f104e48] [cursor=pointer]:
+        - /url: "#"
+      - link "Contacto" [ref=f104e49] [cursor=pointer]:
+        - /url: /contact
+    - generic [ref=f104e50]: © 2025 Gravity AI · B2B SaaS

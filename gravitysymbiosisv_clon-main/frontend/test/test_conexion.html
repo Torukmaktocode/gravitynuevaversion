@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🔧 Test de Conexión - GRAVITY SYMBIOSIS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+      background: #1a1a1a;
+      color: #fff;
+    }
+
+    .test-container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: #2a2a2a;
+      padding: 20px;
+      border-radius: 10px;
+    }
+
+    .test-item {
+      margin: 15px 0;
+      padding: 10px;
+      border-radius: 5px;
+      border-left: 4px solid #666;
+    }
+
+    .success {
+      border-left-color: #4CAF50;
+      background: #1a3a1a;
+    }
+
+    .error {
+      border-left-color: #f44336;
+      background: #3a1a1a;
+    }
+
+    .warning {
+      border-left-color: #ff9800;
+      background: #3a2a1a;
+    }
+
+    .info {
+      border-left-color: #2196F3;
+      background: #1a2a3a;
+    }
+
+    button {
+      background: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background: #45a049;
+    }
+
+    #log {
+      background: #000;
+      color: #0f0;
+      padding: 10px;
+      border-radius: 5px;
+      font-family: monospace;
+      height: 300px;
+      overflow-y: auto;
+      white-space: pre-wrap;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="test-container">
+    <h1>🔧 Test de Conexión - GRAVITY SYMBIOSIS</h1>
+
+    <div class="test-item info">
+      <h3>🌐 Información del Entorno</h3>
+      <p><strong>Protocolo:</strong> <span id="protocol"></span></p>
+      <p><strong>URL Frontend:</strong> <span id="frontend-url"></span></p>
+      <p><strong>URL Backend:</strong> <span id="backend-url"></span></p>
+    </div>
+
+    <div class="test-item">
+      <h3>🧪 Tests de Conectividad</h3>
+      <button onclick="testAll()">🚀 Ejecutar Todos los Tests</button>
+      <button onclick="testBackend()">🔍 Test Backend</button>
+      <button onclick="testModules()">📚 Test Módulos</button>
+      <button onclick="clearLog()">🧹 Limpiar Log</button>
+    </div>
+
+    <div class="test-item">
+      <h3>📋 Log de Tests</h3>
+      <div id="log"></div>
+    </div>
+
+    <div class="test-item warning">
+      <h3>⚠️ Soluciones Comunes</h3>
+      <ul>
+        <li><strong>Si usas file://:</strong> Abre PowerShell en la carpeta del proyecto y ejecuta:
+          <code>python -m http.server 8000</code></li>
+        <li><strong>Si el backend no responde:</strong> Ve a la carpeta backend y ejecuta: <code>python app.py</code>
+        </li>
+        <li><strong>Error CORS:</strong> Asegúrate de que el backend tenga flask-cors instalado</li>
+        <li><strong>Módulos no cargan:</strong> Verifica que los nombres en HTML coincidan con los del backend</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const isFileProtocol = window.location.protocol === 'file:';
+    const API_URL = 'http://127.0.0.1:5000';
+    const FRONTEND_URL = window.location.origin || 'file://';
+
+    document.getElementById('protocol').textContent = window.location.protocol;
+    document.getElementById('frontend-url').textContent = FRONTEND_URL;
+    document.getElementById('backend-url').textContent = API_URL;
+
+    function log(message, type = 'info') {
+      const logDiv = document.getElementById('log');
+      const timestamp = new Date().toLocaleTimeString();
+      const colors = {
+        info: '#0ff',
+        success: '#0f0',
+        error: '#f00',
+        warning: '#ff0'
+      };
+      logDiv.innerHTML += `<span style="color: ${colors[type]}">[${timestamp}] ${message}</span>\n`;
+      logDiv.scrollTop = logDiv.scrollHeight;
+    }
+
+    function clearLog() {
+      document.getElementById('log').innerHTML = '';
+    }
+
+    async function testBackend() {
+      log('🔍 Probando conexión con backend...', 'info');
+
+      try {
+        const response = await fetch(`${API_URL}/conocimiento?modulo=el-camino-del-lobo`);
+        if (response.ok) {
+          const data = await response.json();
+          log(`✅ Backend responde correctamente: ${response.status}`, 'success');
+          log(`📊 Módulo cargado: ${data.nombre || 'Sin nombre'}`, 'success');
+          log(`📚 Conceptos encontrados: ${data.conceptos ? data.conceptos.length : 0}`, 'success');
+          return true;
+        } else {
+          log(`❌ Backend responde con error: ${response.status} - ${response.statusText}`, 'error');
+          return false;
+        }
+      } catch (error) {
+        log(`❌ Error de conexión con backend: ${error.message}`, 'error');
+        if (isFileProtocol) {
+          log('⚠️ USANDO FILE:// - El backend no será accesible desde file://', 'warning');
+          log('💡 SOLUCIÓN: Usa http://127.0.0.1:8000 en lugar de file://', 'warning');
+        }
+        return false;
+      }
+    }
+
+    async function testModules() {
+      log('📚 Probando todos los módulos...', 'info');
+
+      const modules = [
+        'el-camino-del-lobo',
+        'rompe-la-barrera-del-no',
+        'spin-selling',
+        'conocimiento-empresa'
+      ];
+
+      let successCount = 0;
+
+      for (const module of modules) {
+        try {
+          const response = await fetch(`${API_URL}/conocimiento?modulo=${module}`);
+          if (response.ok) {
+            const data = await response.json();
+            log(`✅ ${module}: ${data.conceptos ? data.conceptos.length : 0} conceptos`, 'success');
+            successCount++;
+          } else {
+            log(`❌ ${module}: Error ${response.status}`, 'error');
+          }
+        } catch (error) {
+          log(`❌ ${module}: ${error.message}`, 'error');
+        }
+      }
+
+      log(`📊 Resultado: ${successCount}/${modules.length} módulos funcionando`, successCount === modules.length ? 'success' : 'warning');
+    }
+
+    async function testFrontendCards() {
+      log('🎴 Probando tarjetas del frontend...', 'info');
+
+      const cards = document.querySelectorAll('[data-module]');
+      log(`📋 Tarjetas encontradas: ${cards.length}`, 'info');
+
+      cards.forEach(card => {
+        const module = card.dataset.module;
+        const title = card.querySelector('h3')?.textContent || 'Sin título';
+        log(`🎴 Tarjeta: ${title} (${module})`, 'info');
+      });
+    }
+
+    async function testAll() {
+      log('🚀 Iniciando tests completos...', 'info');
+      log('='.repeat(50), 'info');
+
+      // Test 1: Backend
+      const backendOk = await testBackend();
+
+      // Test 2: Módulos
+      if (backendOk) {
+        await testModules();
+      } else {
+        log('⏭️ Saltando test de módulos (backend no disponible)', 'warning');
+      }
+
+      log('='.repeat(50), 'info');
+      log('🏁 Tests completados', 'info');
+
+      if (backendOk) {
+        log('🎉 ¡Sistema funcionando correctamente!', 'success');
+      } else {
+        log('🔧 Revisa la configuración del backend', 'error');
+      }
+    }
+
+    // Auto-test al cargar la página
+    window.onload = () => {
+      log('🌟 Test de Conexión GRAVITY SYMBIOSIS iniciado', 'info');
+      setTimeout(testAll, 1000);
+    };
+  </script>
+</body>
+
+</html>

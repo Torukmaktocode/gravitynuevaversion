@@ -1,0 +1,69 @@
+{
+  "name": "gravitysymbiosisv1",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
+  "main": "src/main.js",
+  "scripts": {
+    "dev": "vite",
+    "dev:check": "vite --mode check",
+    "build": "vite build",
+    "build:check": "tsc --noEmit",
+    "preview": "vite preview",
+    "lint": "eslint src/",
+    "lint:fix": "eslint src/ --fix",
+    "format": "prettier --check src/",
+    "format:fix": "prettier --write src/",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage",
+    "ci": "npm run lint && npm run typecheck && npm run test",
+    "prepare": "husky"
+  },
+  "lint-staged": {
+    "src/**/*.{js,ts}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "src/**/*.{css,json,md}": [
+      "prettier --write"
+    ]
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Torukmaktocode/gravitysymbiosisv1.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Torukmaktocode/gravitysymbiosisv1/issues"
+  },
+  "homepage": "https://github.com/Torukmaktocode/gravitysymbiosisv1#readme",
+  "dependencies": {
+    "@supabase/supabase-js": "^2.90.1",
+    "xlsx": "^0.18.5"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^21.1.0",
+    "@commitlint/config-conventional": "^21.1.0",
+    "@eslint/js": "^10.0.1",
+    "@testing-library/dom": "^10.4.1",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@types/node": "^26.0.1",
+    "eslint": "^10.5.0",
+    "eslint-config-prettier": "^10.1.8",
+    "globals": "^17.7.0",
+    "husky": "^9.1.7",
+    "jsdom": "^29.1.1",
+    "lint-staged": "^17.0.8",
+    "msw": "^2.14.6",
+    "prettier": "^3.8.4",
+    "typescript": "^6.0.3",
+    "typescript-eslint": "^8.62.0",
+    "vite": "^5.4.21",
+    "vite-plugin-checker": "^0.14.4",
+    "vitest": "^1.6.1"
+  }
+}

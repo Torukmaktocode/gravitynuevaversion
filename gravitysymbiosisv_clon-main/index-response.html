@@ -1,0 +1,2743 @@
+<!DOCTYPE html>
+<html lang="es" class="dark">
+
+<head>
+  <script type="module">
+import { inject } from "/@vite-plugin-checker-runtime";
+inject({
+  overlayConfig: {},
+  base: "/",
+});
+</script>
+
+  <script type="module" src="/@vite/client"></script>
+
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GRAVITY SYMBIOSIS - Elite Platform</title>
+  <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+
+  <!-- Supabase JS -->
+  <!-- Supabase (Manejado por Vite/Modules) -->
+
+  <!-- Tailwind CSS (CDN for dev) -->
+  <script src="https://cdn.tailwindcss.com" integrity="sha384-igm5BeiBt36UU4gqwWS7imYmelpTsZlQ45FZf+XBn9MuJbn4nQr7yx1yFydocC/K" crossorigin="anonymous"></script>
+
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js" integrity="sha384-jb8JQMbMoBUzgWatfe6COACi2ljcDdZQ2OxczGA3bGNeWe+6DChMTBJemed7ZnvJ" crossorigin="anonymous"></script>
+
+  <!-- SheetJS for Excel XLSX exports -->
+  <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js" integrity="sha384-vtjasyidUo0kW94K5MXDXntzOJpQgBKXmE7e2Ga4LG0skTTLeBi97eFAXsqewJjw" crossorigin="anonymous"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Orbitron:wght@400;500;700;900&family=Rajdhani:wght@400;500;600;700&family=Bebas+Neue&family=Michroma&family=Syne:wght@400;700;800&family=JetBrains+Mono:wght@300;400&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="/src/main.css">
+  <link rel="stylesheet" href="/src/dashboard.css">
+  <!-- Tailwind Config for Custom Colors -->
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            background: 'hsl(0, 0%, 0%)',
+            primary: 'hsl(145, 63%, 49%)',
+            secondary: 'hsl(0, 0%, 10%)',
+            accent: 'hsl(145, 63%, 25%)',
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+            orbitron: ['Orbitron', 'sans-serif'],
+            rajdhani: ['Rajdhani', 'sans-serif'],
+          }
+        }
+      }
+    }
+  </script>
+</head>
+
+<body>
+
+  <div id="app-loader" class="fixed inset-0 flex items-center justify-center bg-black/80 backdrop-blur-sm z-100">
+    <div class="flex justify-center">
+      <div class="loader"></div>
+    </div>
+  </div>
+
+  <!-- ================= LANDING PAGE ================= -->
+  <section id="view-landing" class="view-section hidden">
+    <canvas id="bg-canvas"></canvas>
+    <div class="grid-overlay"></div>
+    <div class="noise"></div>
+    <div id="cursor"></div>
+    <div id="cursor-ring"></div>
+
+    <nav>
+      <a href="#" class="nav-logo">
+        <div class="logo-main">GRΛVITY</div>
+        <div class="logo-sub">SYMBIOSIS</div>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#problem">Problema</a></li>
+        <li><a href="#modules">Módulos</a></li>
+        <li><a href="#symbiosis">Symbiosis</a></li>
+        <li><a href="#pricing">Precio</a></li>
+      </ul>
+      <div class="nav-actions">
+        <a href="/login" class="nav-login">Iniciar Sesión</a>
+        <a href="/dashboard" id="landing-dashboard-btn" class="nav-login hidden">Ver Dashboard</a>
+        <button class="nav-cta">Solicitar Demo</button>
+      </div>
+    </nav>
+
+    <main>
+      <section id="hero">
+        <div class="hero-eyebrow"> Sistema 360 & Coach de entrenamiento en tiempo real</div>
+        <h1 class="hero-title">
+          <span class="line1">VENDE MÁS</span>
+          <span class="line2" data-text="MÁS RÁPIDO">VENDE MEJOR</span>
+          <span class="line3" data-text="MÁS RÁPIDO">VENDE AHORA</span>
+        </h1>
+        <p class="hero-sub">
+          La IA que <strong>entrena, acompaña y eleva</strong> a tu equipo comercial en tiempo real.
+          Reduce el tiempo de onboarding, elimina la rotación y multiplica los cierres.
+        </p>
+        <div class="hero-actions">
+          <a href="#cta" class="btn-primary">Empezar Piloto</a>
+          <a href="#modules" class="btn-secondary">Ver Plataforma</a>
+        </div>
+        <div class="hero-stats">
+          <div class="stat"><span class="stat-num">70%</span><span class="stat-label">Rotación Eliminada</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">3X</span><span class="stat-label">Más Cierres</span></div>
+          <div class="stat-divider"></div>
+          <div class="stat"><span class="stat-num">-80%</span><span class="stat-label">Tiempo de Rampa</span></div>
+        </div>
+        <div class="scroll-hint"><span>SCROLL</span>
+          <div class="scroll-line"></div>
+        </div>
+      </section>
+
+      <section id="problem">
+        <div class="reveal">
+          <span class="section-tag">// El problema que resolvemos</span>
+          <h2 class="section-title">TU FUERZA DE VENTAS<br>ESTÁ PERDIENDO<br><span
+              style="color:var(--fire)">DINERO.</span></h2>
+        </div>
+        <div class="problem-grid reveal">
+          <div class="problem-card"><span class="problem-num">70%</span>
+            <div class="problem-title">Alta Rotación Comercial</div>
+            <p class="problem-desc">Cada vendedor que se va lleva contigo meses de capacitación invertida.</p>
+          </div>
+          <div class="problem-card"><span class="problem-num">6M+</span>
+            <div class="problem-title">Meses de Aprendizaje</div>
+            <p class="problem-desc">Un vendedor nuevo tarda entre 4 y 9 meses en alcanzar su rendimiento óptimo.</p>
+          </div>
+          <div class="problem-card"><span class="problem-num">0%</span>
+            <div class="problem-title">Entrenamiento con Impacto Real</div>
+            <p class="problem-desc">Los métodos tradicionales no funcionan. Los cursos se olvidan.</p>
+          </div>
+        </div>
+      </section>
+
+      <section id="modules">
+        <div class="modules-header reveal">
+          <div><span class="section-tag">// Sistema Completo</span>
+            <h2 class="section-title">LOS<br>MÓDULOS</h2>
+          </div>
+          <p class="modules-desc">Gravity es un ecosistema de entrenamiento donde cada módulo cumple un rol específico
+            en el ciclo de performance del vendedor.</p>
+        </div>
+        <div class="modules-grid reveal">
+          <div class="module-card"><span class="module-icon">🎯</span><span class="module-label">Módulo 01</span>
+            <div class="module-name">CLOSER</div>
+          </div>
+          <div class="module-card"><span class="module-icon">🎙️</span><span class="module-label">Módulo 02</span>
+            <div class="module-name">ENTRENADOR</div>
+          </div>
+          <div class="module-card"><span class="module-icon fire">👁️</span><span class="module-label fire">Módulo
+              03</span>
+            <div class="module-name">SHADOW</div>
+          </div>
+          <div class="module-card"><span class="module-icon">🧠</span><span class="module-label">Módulo 04</span>
+            <div class="module-name">BIENESTAR</div>
+          </div>
+          <div class="module-card"><span class="module-icon">📚</span><span class="module-label">Módulo 05</span>
+            <div class="module-name">CONOCIMIENTO</div>
+          </div>
+          <div class="module-card"><span class="module-icon">📊</span><span class="module-label">Módulo 06</span>
+            <div class="module-name">ANALYTICS</div>
+          </div>
+        </div>
+      </section>
+
+      <section id="symbiosis">
+        <div class="reveal">
+          <span class="section-tag" style="justify-content:center;display:block">// La gran diferencia</span>
+          <h2 class="symbiosis-title">LA<br><span>SYMBIOSIS</span><br>IA–VENDEDOR</h2>
+          <p class="symbiosis-sub">La IA de Gravity no solo enseña. Vive dentro del flujo de trabajo del vendedor.</p>
+        </div>
+      </section>
+
+      <section id="pricing">
+        <div class="reveal">
+          <span class="section-tag" style="display:block;text-align:center">// Modelo SaaS B2B</span>
+          <h2 class="section-title" style="text-align:center">PRICING<br>SIMPLE</h2>
+        </div>
+        <div class="pricing-cards reveal">
+          <div class="price-card featured">
+            <span class="price-label">Popular</span>
+            <div class="price-val">$40</div>
+            <span class="price-period">por usuario / mes</span>
+            <span class="price-setup">Setup Fee: US$2.000 – US$5.000</span>
+            <a href="#" class="price-btn">Contratar Ahora</a>
+          </div>
+          <div class="price-card">
+            <span class="price-label">Enterprise</span>
+            <div class="price-val">Custom</div>
+            <span class="price-period">contrato anual</span>
+            <a href="#" class="price-btn">Hablar con Ventas</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer>
+      <a href="#" class="footer-logo">↑ VOLVER AL INICIO</a>
+      <div class="footer-links">
+        <a href="#">Privacidad</a>
+        <a href="#">Términos</a>
+        <a href="#">Blog</a>
+        <a href="#">Contacto</a>
+      </div>
+      <span class="footer-copy">© 2025 Gravity AI · B2B SaaS</span>
+    </footer>
+  </section>
+
+  <!-- ================= AUTH MODAL ================= -->
+  <div id="auth-modal" class="hidden">
+    <div class="card w-full max-w-md p-8 relative overflow-hidden">
+      <!-- Background Decoration -->
+      <div class="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 rounded-full blur-3xl"></div>
+
+      <!-- LOGIN PANEL -->
+      <div id="login-panel" class="relative z-10 transition-opacity duration-300">
+        <div class="text-center mb-8">
+          <h1 class="font-orbitron text-3xl text-white mb-2 tracking-wider">GRAVITY<span
+              class="text-primary">SYMBIOSIS</span></h1>
+          <p class="text-muted-foreground">Accede a la plataforma de élite</p>
+        </div>
+
+        <div id="login-top-error"
+          class="bg-red-500/10 border border-red-500/50 text-red-400 text-sm p-3 rounded-lg mb-6 hidden text-center">
+        </div>
+
+        <form id="login-form" class="space-y-4">
+          <div>
+            <label class="text-sm font-medium text-gray-300 ml-1">Email</label>
+            <input type="email" id="login-email" class="input mt-1" placeholder="tu@email.com" required>
+          </div>
+          <div>
+            <label class="text-sm font-medium text-gray-300 ml-1">Contraseña</label>
+            <div class="relative">
+              <input type="password" id="login-password" class="input mt-1" placeholder="••••••••" required>
+              <button type="button"
+                class="toggle-password absolute right-3 -mt-1.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                <svg class="eye-open hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+                  <path
+                    d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg class="eye-closed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-eye-closed-icon lucide-eye-closed">
+                  <path d="m15 18-.722-3.25" />
+                  <path d="M2 8a10.645 10.645 0 0 0 20 0" />
+                  <path d="m20 15-1.726-2.05" />
+                  <path d="m4 15 1.726-2.05" />
+                  <path d="m9 18 .722-3.25" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary w-full py-3 text-lg shadow-lg shadow-primary/25">
+            Iniciar Sesión
+          </button>
+          <div id="login-error" class="text-red-500 text-sm text-center hidden"></div>
+        </form>
+
+        <div class="mt-6 pt-6 border-t border-white/10">
+          <p class="text-center text-sm text-gray-400 mb-3">¿Aún no tienes identidad operativa?</p>
+          <button type="button" id="show-signup-link"
+            class="w-full py-2 mb-2 border border-primary text-primary hover:bg-primary/10 rounded-md transition-all font-bold uppercase tracking-wider text-sm">
+            CREAR CUENTA NUEVA
+          </button>
+          <button id="show-recovery-password-link" class="w-full text-center text-sm text-primary">¿Ha olvidado su
+            contraseña?</button>
+
+        </div>
+      </div>
+
+      <!-- SIGNUP PANEL (Hidden) -->
+      <div id="signup-panel" class="relative z-10 hidden transition-opacity duration-300">
+        <div class="text-center mb-8">
+          <h1 class="font-orbitron text-3xl text-white mb-2">REGISTRO</h1>
+          <p class="text-muted-foreground">Crea tu identidad operativa</p>
+        </div>
+
+        <form id="signup-form" class="space-y-2">
+          <div>
+            <label class="text-sm font-medium text-gray-300 ml-1">Nombre Completo</label>
+            <input type="text" id="signup-name" class="input mt-1" placeholder="Ej. John Wick" required>
+          </div>
+          <div>
+            <label class="text-sm font-medium text-gray-300 ml-1">Email</label>
+            <input type="email" id="signup-email" class="input mt-1" placeholder="tu@email.com" required>
+          </div>
+          <div>
+            <label class="text-sm font-medium text-gray-300 ml-1">Contraseña</label>
+            <div class="relative">
+              <input type="password" id="signup-password" class="input mt-1" placeholder="••••••••" required>
+              <button type="button"
+                class="toggle-password absolute right-3 -mt-1.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                <svg class="eye-open hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+                  <path
+                    d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg class="eye-closed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-eye-closed-icon lucide-eye-closed">
+                  <path d="m15 18-.722-3.25" />
+                  <path d="M2 8a10.645 10.645 0 0 0 20 0" />
+                  <path d="m20 15-1.726-2.05" />
+                  <path d="m4 15 1.726-2.05" />
+                  <path d="m9 18 .722-3.25" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <div>
+            <label class="text-sm font-medium text-gray-300 ml-1">Confirmar Contraseña</label>
+            <div class="relative">
+              <input type="password" id="signup-password-confirm" class="input mt-1 pr-10" placeholder="••••••••"
+                required>
+              <button type="button"
+                class="toggle-password absolute right-3 -mt-1.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                <svg class="eye-open hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+                  <path
+                    d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg class="eye-closed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-eye-closed-icon lucide-eye-closed">
+                  <path d="m15 18-.722-3.25" />
+                  <path d="M2 8a10.645 10.645 0 0 0 20 0" />
+                  <path d="m20 15-1.726-2.05" />
+                  <path d="m4 15 1.726-2.05" />
+                  <path d="m9 18 .722-3.25" />
+                </svg>
+              </button>
+            </div>
+            <p class="text-xs text-gray-300 mt-1">Mínimo 6 caracteres.</p>
+          </div>
+          <button type="submit" class="btn btn-primary w-full py-3 text-lg">
+            Registrar Credenciales
+          </button>
+          <div id="signup-success" class="text-primary text-sm text-center hidden mt-2"></div>
+          <div id="signup-error" class="text-red-500 text-sm text-center hidden"></div>
+        </form>
+
+        <div class="mt-6 pt-6 border-t border-white/10">
+          <p class="text-center text-sm text-gray-400 mb-3">¿Ya tienes credenciales?</p>
+          <button type="button" id="show-login-link"
+            class="w-full py-2 border border-gray-400 text-gray-300 hover:bg-white/5 rounded-md transition-all font-bold uppercase tracking-wider text-sm">
+            VOLVER A INICIAR SESIÓN
+          </button>
+        </div>
+      </div>
+
+      <!-- RECOVERY PASSWORD PANEL (Hidden) -->
+      <div id="recovery-password-panel" class="relative z-10 hidden transition-opacity duration-300">
+        <div class="text-center mb-8">
+          <h1 class="font-orbitron text-3xl text-white mb-2">RESTABLECER CONTRASEÑA</h1>
+          <p class="text-muted-foreground">Introduce tu correo y te enviaremos instrucciones para restablecer tu
+            contraseña</p>
+        </div>
+
+        <form id="recovery-password-form" class="space-y-4">
+          <div>
+            <label class="text-sm font-medium text-gray-300 ml-1">Email</label>
+            <input type="email" id="recovery-password-email" class="input mt-1" placeholder="tu@email.com" required>
+          </div>
+          <button type="submit" class="btn btn-primary w-full py-3 text-lg">
+            ENVIAR
+          </button>
+          <div id="recovery-password-success" class="text-primary text-sm text-center hidden mt-2"></div>
+          <div id="recovery-password-error" class="text-red-500 text-sm text-center hidden"></div>
+        </form>
+
+        <div class="mt-6 pt-6 border-t border-white/10">
+          <button type="button" id="show-recovery-login-link"
+            class="w-full py-2 border border-gray-400 text-gray-300 hover:bg-white/5 rounded-md transition-all font-bold uppercase tracking-wider text-sm">
+            VOLVER A INICIAR SESIÓN
+          </button>
+        </div>
+      </div>
+
+      <!-- RESET PASSWORD PANEL (Hidden) -->
+      <div id="reset-password-panel" class="relative z-10 hidden transition-opacity duration-300">
+        <div class="text-center mb-8">
+          <h1 class="font-orbitron text-3xl text-white mb-2">NUEVA CONTRASEÑA</h1>
+          <p class="text-muted-foreground">Introduce tu nueva contraseña</p>
+        </div>
+        <form id="reset-password-form" class="space-y-4">
+          <div>
+            <label class="text-sm font-medium text-gray-300 ml-1">Nueva contraseña</label>
+            <div class="relative">
+              <input type="password" id="reset-password-input" class="input mt-1" required>
+              <button type="button"
+                class="toggle-password absolute right-3 -mt-1.5 top-1/2 -translate-y-1/2 text-gray-400 hover:text-white">
+                <svg class="eye-open hidden" xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round" class="lucide lucide-eye-icon lucide-eye">
+                  <path
+                    d="M2.062 12.348a1 1 0 0 1 0-.696 10.75 10.75 0 0 1 19.876 0 1 1 0 0 1 0 .696 10.75 10.75 0 0 1-19.876 0" />
+                  <circle cx="12" cy="12" r="3" />
+                </svg>
+                <svg class="eye-closed" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                  fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="lucide lucide-eye-closed-icon lucide-eye-closed">
+                  <path d="m15 18-.722-3.25" />
+                  <path d="M2 8a10.645 10.645 0 0 0 20 0" />
+                  <path d="m20 15-1.726-2.05" />
+                  <path d="m4 15 1.726-2.05" />
+                  <path d="m9 18 .722-3.25" />
+                </svg>
+              </button>
+            </div>
+          </div>
+
+          <button type="submit" class="btn btn-primary w-full py-3 text-lg">
+            CAMBIAR CONTRASEÑA
+          </button>
+
+          <div id="reset-password-error" class="text-red-500 text-sm text-center hidden"></div>
+          <div id="reset-password-success" class="text-primary text-sm text-center hidden"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ================= DEMO MODAL ================= -->
+  <div id="demo-modal" class="hidden fixed inset-0 z-50 overflow-y-auto bg-black/80 backdrop-blur-sm flex items-center justify-center p-4">
+    <div class="relative w-full max-w-2xl mx-auto animate-in fade-in zoom-in-95 duration-300">
+      <div class="card p-8 md:p-12 bg-[#050a08] border border-primary/20 relative overflow-hidden">
+        <div class="absolute -top-20 -right-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+        <div class="absolute -bottom-20 -left-20 w-60 h-60 bg-primary/5 rounded-full blur-3xl pointer-events-none"></div>
+
+        <button id="demo-close" class="absolute top-4 right-4 w-10 h-10 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-gray-400 hover:text-white hover:bg-white/10 transition-all z-10">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="relative z-10" id="demo-form-container">
+          <div class="text-center mb-8">
+            <span class="section-tag" style="display:inline-block;text-align:center">// Solicitar Demo</span>
+            <h2 class="font-orbitron text-3xl md:text-4xl font-black text-white mt-4 tracking-wider">AGENDAR <span class="text-primary">DEMO</span></h2>
+            <p class="text-gray-400 mt-3 text-sm">Descubre cómo Gravity puede transformar tu equipo comercial.</p>
+            <div class="w-16 h-0.5 bg-primary/40 mx-auto mt-4"></div>
+          </div>
+
+          <form id="demo-form" class="space-y-5">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="text-xs font-bold text-gray-300 uppercase tracking-widest ml-1">Nombre completo</label>
+                <input type="text" name="nombre" class="demo-input mt-1.5" placeholder="Ej. Juan Pérez" required>
+              </div>
+              <div>
+                <label class="text-xs font-bold text-gray-300 uppercase tracking-widest ml-1">Email corporativo</label>
+                <input type="email" name="email" class="demo-input mt-1.5" placeholder="tu@empresa.com" required>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+              <div>
+                <label class="text-xs font-bold text-gray-300 uppercase tracking-widest ml-1">Teléfono</label>
+                <input type="tel" name="telefono" class="demo-input mt-1.5" placeholder="+51 999 888 777">
+              </div>
+              <div>
+                <label class="text-xs font-bold text-gray-300 uppercase tracking-widest ml-1">Nombre de la empresa</label>
+                <input type="text" name="empresa" class="demo-input mt-1.5" placeholder="Ej. TechCorp S.A.C." required>
+              </div>
+            </div>
+
+            <div>
+              <label class="text-xs font-bold text-gray-300 uppercase tracking-widest ml-1">Tamaño del equipo comercial</label>
+              <select name="tamano" class="demo-input mt-1.5" required>
+                <option value="" disabled selected>— Selecciona —</option>
+                <option value="1-5">1 - 5 vendedores</option>
+                <option value="6-20">6 - 20 vendedores</option>
+                <option value="21-50">21 - 50 vendedores</option>
+                <option value="51+">Más de 50 vendedores</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="text-xs font-bold text-gray-300 uppercase tracking-widest ml-1">Mensaje</label>
+              <textarea name="mensaje" class="demo-input mt-1.5 min-h-[100px]" placeholder="Cuéntanos sobre tu equipo y qué desafíos enfrentan..."></textarea>
+            </div>
+
+            <button type="submit" class="w-full py-4 bg-primary text-black font-bold font-orbitron text-sm uppercase tracking-widest rounded-xl hover:bg-[#28D20F] hover:shadow-[0_0_40px_rgba(40,210,15,0.3)] transition-all duration-300 flex items-center justify-center gap-3 group">
+              <span>ENVIAR SOLICITUD</span>
+              <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="5" y1="12" x2="19" y2="12"></line>
+                <polyline points="12 5 19 12 12 19"></polyline>
+              </svg>
+            </button>
+          </form>
+
+          <div id="demo-success" class="hidden text-center py-12">
+            <div class="w-20 h-20 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-6">
+              <svg class="w-10 h-10 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
+                <polyline points="22 4 12 14.01 9 11.01"></polyline>
+              </svg>
+            </div>
+            <h3 class="font-orbitron text-2xl font-bold text-white mb-3">¡SOLICITUD ENVIADA!</h3>
+            <p class="text-gray-400 text-sm max-w-md mx-auto">Gracias por tu interés. Nuestro equipo se pondrá en contacto contigo en las próximas 24 horas hábiles para agendar tu demo personalizada.</p>
+            <p class="text-primary text-xs font-bold mt-6 tracking-wider">contacto@gravitysymbiosis.com</p>
+            <button id="demo-close-success" class="mt-8 px-8 py-3 border border-primary/30 text-primary hover:bg-primary/10 rounded-xl transition-all font-bold text-xs uppercase tracking-widest">
+              CERRAR
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ================= MAIN APP LAYOUT ================= -->
+  <div id="app-container" class="app-layout hidden">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+      <div class="sidebar-header flex items-center justify-between pl-5">
+        <span class="font-orbitron font-bold text-lg tracking-wider text-white">Gravity <span
+            class="text-primary">Symbiosis</span></span>
+        <button id="sidebar-close" class="md:hidden text-gray-400 hover:text-white p-1">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="18" y1="6" x2="6" y2="18"></line>
+            <line x1="6" y1="6" x2="18" y2="18"></line>
+          </svg>
+        </button>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 mt-4 px-2">Plataforma
+        </div>
+        <a href="/dashboard" class="nav-item active" data-target="dashboard">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z" />
+          </svg>
+          <span>Dashboard</span>
+        </a>
+        <a href="/alfred-ai" class="nav-item" data-target="alfred">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M9.663 17h4.673M12 3v1m6.364 1.636l-.707.707M21 12h-1M4 12H3m3.343-5.657l-.707-.707m2.828 9.9a5 5 0 117.072 0l-.548.547A3.374 3.374 0 0014 18.469V19a2 2 0 11-4 0v-.531c0-.895-.356-1.754-.988-2.386l-.548-.547z" />
+          </svg>
+          <span>Alfred AI</span>
+        </a>
+        <a href="/entrenador" class="nav-item" data-target="trainer">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
+          </svg>
+          <span>Entrenador</span>
+        </a>
+        <a href="/closer-elite" class="nav-item" data-target="closer">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+          </svg>
+          <span>Closer Elite</span>
+        </a>
+        <a href="/clients" class="nav-item hidden" data-target="clients">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+          </svg>
+          <span>Clientes</span>
+        </a>
+        <a href="/products" class="nav-item hidden" data-target="products">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
+          </svg>
+          <span>Productos</span>
+        </a>
+        <a href="/base-conocimiento" class="nav-item" data-target="knowledge">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+          </svg>
+          <span>Base de Conocimiento</span>
+        </a>
+        <a href="/shadow" class="nav-item" data-target="copilot">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+          </svg>
+          <span>SHADOW</span>
+        </a>
+        <a href="/bienestar" class="nav-item" data-target="wellness">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
+          </svg>
+          <span>Bienestar</span>
+        </a>
+        <a href="/perfil" class="nav-item" data-target="profile">
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+          </svg>
+          <span>Mi Perfil</span>
+        </a>
+
+        <!-- Super Admin Only Section -->
+        <div id="superadmin-nav-section" class="hidden">
+          <div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 mt-6 px-2">
+            Super Admin</div>
+          <a href="/admin/company" class="nav-item" data-target="superadmin-companies">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+            </svg>
+            <span>Empresas</span>
+          </a>
+
+          <a href="/admin/users" class="nav-item" data-target="superadmin-users">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <span>Usuarios</span>
+          </a>
+
+          <a href="/admin/whitelist" class="nav-item" data-target="superadmin-whitelist">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+            <span>Lista Blanca</span>
+          </a>
+
+          <a href="/admin/knowledge" class="nav-item" data-target="superadmin-knowledge">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span>Base Conocimiento</span>
+          </a>
+
+        </div>
+
+        <!-- Admin Only Section (company_admin) -->
+        <div id="admin-nav-section" class="hidden">
+          <div class="text-xs font-bold text-muted-foreground uppercase tracking-wider mb-2 mt-6 px-2 text-red-400">
+            Administración</div>
+          <a href="/admin-users" class="nav-item" data-target="admin-users">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+            </svg>
+            <span>Usuarios</span>
+          </a>
+
+
+
+          <a href="/admin-invitations" class="nav-item" data-target="admin-invitations">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+            </svg>
+            <span>Invitaciones</span>
+          </a>
+
+          <a href="/knowledge-admin" class="nav-item" data-target="knowledge-admin">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span>Base Conocimiento</span>
+          </a>
+        </div>
+      </nav>
+
+      <div class="p-4 border-t border-gray-800">
+
+        <button id="logout-btn" onclick="window.doLogout(event)"
+          class="flex items-center gap-2 mb-6 text-sm text-gray-400 hover:text-white transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path>
+            <polyline points="16 17 21 12 16 7"></polyline>
+            <line x1="21" y1="12" x2="9" y2="12"></line>
+          </svg>
+          <span>Cerrar Sesión</span>
+        </button>
+        <button id="tutorial-btn"
+          class="w-full py-2.5 bg-primary/10 hover:bg-primary/20 text-primary font-bold rounded-xl transition-all duration-300 flex items-center justify-center gap-2 border border-primary/20">
+          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"></circle>
+            <polygon points="10 8 16 12 10 16 10 8"></polygon>
+          </svg>
+          <span>Ver Tutorial</span>
+        </button>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT WRAPPER -->
+    <div class="main-wrapper">
+      <!-- TOPBAR -->
+      <header class="topbar">
+        <button id="sidebar-toggle" class="text-gray-400 hover:text-white transition-colors">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <div class="ml-auto flex items-center gap-6">
+
+          <div class="flex items-center gap-4">
+            <div class="text-right">
+              <div id="user-display-name" class="text-sm font-semibold text-white">Cargando...</div>
+              <div id="user-role-badge" class="text-xs text-muted-foreground uppercase">...</div>
+            </div>
+            <button id="topbar-profile-btn"
+              class="w-10 h-10 rounded-full bg-gradient-to-tr from-primary to-blue-500 overflow-hidden border-2 border-primary/20 hover:border-primary transition-all">
+              <img id="user-avatar-img" src="" class="w-full h-full object-cover hidden">
+              <span id="user-avatar-initial" class="font-bold text-white text-lg">U</span>
+            </button>
+          </div>
+      </header>
+
+      <!-- DYNAMIC CONTENT AREA -->
+      <main id="main-content" class="content-area">
+
+        <!-- VISTA DASHBOARD (VENDEDOR/USER WEEKLY CALENDAR & STATS) -->
+        <section id="view-dashboard"
+          class="view-section hidden pt-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+
+          <!-- Top bar with avatar & greetings -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+              <h1 class="font-orbitron text-3xl font-black text-white tracking-wider">DASHBOARD</h1>
+              <p class="text-xs text-muted-foreground uppercase tracking-widest mt-1">Resumen individual de
+                entrenamiento</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <button
+                class="theme-dashboard-toggle px-4 py-2 bg-secondary/50 text-gray-300 font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border border-white/10"
+                type="button">
+                <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-icon-dark hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <span class="theme-btn-text">MODO CLARO</span>
+              </button>
+              <button
+                class="px-4 py-2 bg-primary text-black font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 border-0 hidden"
+                id="userDownloadBtn" type="button">
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>Descargar reporte</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Main Layout Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- Left Column: Weekly Calendar & View Options (8 cols) -->
+            <div class="lg:col-span-8 space-y-8">
+
+              <!-- Weekly Calendar Panel -->
+              <div
+                class="card p-6 bg-gradient-to-br from-[#0a0a0a] to-[#111] border-white/5 relative overflow-hidden group">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="font-orbitron font-bold text-lg text-white flex items-center gap-2">
+                    <span class="text-primary italic">|</span> CALENDARIO SEMANAL
+                  </h3>
+                  <div class="text-xs text-gray-300">
+                    Promedio semanal: <strong class="text-primary" id="weeklyAverage">0 min</strong>
+                  </div>
+                </div>
+
+                <!-- Calendar Tools -->
+                <div class="flex flex-wrap items-center gap-2 mb-6">
+                  <span
+                    class="px-3 py-1.5 rounded-xl border border-white/5 bg-secondary/20 text-xs font-bold text-white flex items-center gap-2">
+                    <span class="w-2 h-2 rounded-full bg-primary animate-pulse"></span>
+                    <span id="user-name-lock">Agente</span>
+                  </span>
+
+                  <div class="flex flex-wrap gap-1 bg-secondary/30 p-1 rounded-xl border border-white/5">
+                    <button
+                      class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-all"
+                      data-activity-mode="training" type="button">Entrenamiento</button>
+                    <button
+                      class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-all"
+                      data-activity-mode="closer" type="button">Closer</button>
+                    <button
+                      class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-all"
+                      data-activity-mode="quizz" type="button">Quizz</button>
+                    <button
+                      class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-all active bg-primary text-black"
+                      data-activity-mode="all" type="button">All</button>
+                  </div>
+
+
+                </div>
+
+                <!-- Responsive Grid Wrapper -->
+                <div class="overflow-x-auto custom-scrollbar pb-2">
+                  <div id="weeklyCalendar" class="grid gap-2 min-w-[620px]">
+                    <!-- Injected via JS -->
+                  </div>
+                </div>
+
+                <!-- Legend -->
+                <div
+                  class="flex flex-wrap items-center gap-4 mt-6 text-[10px] text-gray-400 font-bold uppercase tracking-wider border-t border-white/5 pt-4">
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#ff3365]"></i> 0 min</span>
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#f97316]"></i> 1 - 9 min</span>
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#f5b21a]"></i> 10 - 19 min</span>
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#22c66f]"></i> 20 - 30 min</span>
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#2f80ed]"></i> +30 min</span>
+                </div>
+              </div>
+
+              <!-- Calendar View Settings Panel -->
+              <div class="card p-6 bg-[#0a0a0a] border-white/5">
+                <h3 class="font-orbitron font-bold text-lg text-white mb-6 flex items-center gap-2">
+                  <span class="text-primary italic">▤</span> VISTA DEL CALENDARIO <span
+                    class="text-xs text-muted-foreground font-sans font-normal">(RANGO Y NAVEGACIÓN)</span>
+                </h3>
+
+                <div class="space-y-4">
+                  <!-- Navigation buttons -->
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      data-calendar-view="day" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Diario</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Un día por
+                        vendedor</span>
+                    </button>
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-primary/20 bg-primary/10 text-primary transition-all text-center active"
+                      data-calendar-view="week" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Semana</strong>
+                      <span class="text-[9px] text-primary/70 font-medium block mt-0.5 leading-tight">Lunes a
+                        domingo</span>
+                    </button>
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      data-calendar-view="month" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Mensual</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Días hábiles del
+                        mes</span>
+                    </button>
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      id="todayWeek" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Hoy</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Volver a la fecha
+                        actual</span>
+                    </button>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3">
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      id="prevRange" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Anterior</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Retroceder
+                        rango</span>
+                    </button>
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      id="nextRange" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Siguiente</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Avanzar rango</span>
+                    </button>
+                  </div>
+
+                  <!-- Date Pickers -->
+                  <div class="grid grid-cols-2 gap-3 pt-1">
+                    <div
+                      class="flex flex-col gap-1.5 p-3 rounded-xl border border-white/5 bg-secondary/20 justify-center">
+                      <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                        for="rangeStartInput">Inicio</label>
+                      <input id="rangeStartInput" type="date"
+                        class="bg-transparent border-0 outline-none text-white text-xs font-mono font-bold w-full mt-1"
+                        value="2024-05-06">
+                    </div>
+                    <div
+                      class="flex flex-col gap-1.5 p-3 rounded-xl border border-white/5 bg-secondary/20 justify-center">
+                      <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                        for="rangeEndInput">Fin</label>
+                      <input id="rangeEndInput" type="date"
+                        class="bg-transparent border-0 outline-none text-white text-xs font-mono font-bold w-full mt-1"
+                        value="2024-05-10">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column: Stats & Rankings (4 cols) -->
+            <div class="lg:col-span-4 space-y-8">
+
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-2 gap-4" id="stats">
+                <!-- Injected via JS -->
+              </div>
+
+              <!-- Information Strip -->
+              <div
+                class="flex items-start gap-3 p-4 rounded-2xl border border-blue-500/20 bg-blue-500/5 text-gray-300 text-xs leading-relaxed">
+                <span
+                  class="w-5 h-5 rounded-full bg-blue-500 text-black flex items-center justify-center font-bold font-mono text-[10px] shrink-0">i</span>
+                <div>
+                  <strong class="text-white">Cada consulta en Closer equivale a 30 segundos.</strong><br>
+                  Cada respuesta en Quizz equivale a 30 segundos.
+                </div>
+              </div>
+
+              <!-- Weekly Ranking Panel -->
+              <div class="card p-6 bg-[#0a0a0a] border-white/5">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="font-orbitron font-bold text-sm text-white tracking-widest flex items-center gap-2">
+                    <span class="text-primary italic">#</span> RANKING SEMANAL
+                  </h3>
+                  <div class="flex items-center gap-1.5">
+                    <button
+                      class="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center hover:bg-primary/20 hover:scale-110 active:scale-95 transition-all"
+                      id="userViewAllBtn" title="Ver todo el ranking">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    </button>
+                    <button
+                      class="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center hover:bg-primary/20 hover:scale-110 active:scale-95 transition-all"
+                      id="userDownloadRankingBtn" title="Descargar ranking">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="overflow-y-auto pr-1">
+                  <div class="ranking-list text-xs" id="ranking">
+                    <!-- Injected via JS -->
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- VISTA DASHBOARD ADMIN (ADMIN WEEKLY CALENDAR & GENERAL REPORT) -->
+        <section id="view-dashboard-admin"
+          class="view-section hidden admin-dashboard-scoped pt-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+
+          <!-- Top bar with title & actions -->
+          <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+            <div>
+              <h1 class="font-orbitron text-3xl font-black text-white tracking-wider">DASHBOARD</h1>
+              <p class="text-xs text-muted-foreground uppercase tracking-widest mt-1">Resumen general del equipo
+                comercial</p>
+            </div>
+
+            <div class="flex items-center gap-2">
+              <select id="superAdminCompanyFilter"
+                class="hidden px-3 py-2 rounded-xl border border-primary/20 bg-primary/10 text-xs font-bold text-primary outline-none">
+                <option value="all">Todas las empresas</option>
+              </select>
+              <button
+                class="theme-dashboard-toggle px-4 py-2 bg-secondary/50 text-gray-300 font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-105 active:scale-95 transition-all flex items-center gap-2 border border-white/10"
+                type="button">
+                <svg class="theme-icon-light" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <circle cx="12" cy="12" r="5"></circle>
+                  <line x1="12" y1="1" x2="12" y2="3"></line>
+                  <line x1="12" y1="21" x2="12" y2="23"></line>
+                  <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                  <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                  <line x1="1" y1="12" x2="3" y2="12"></line>
+                  <line x1="21" y1="12" x2="23" y2="12"></line>
+                  <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                  <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                </svg>
+                <svg class="theme-icon-dark hidden" xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                  stroke-linejoin="round">
+                  <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                </svg>
+                <span class="theme-btn-text">MODO CLARO</span>
+              </button>
+              <button
+                class="px-4 py-2 bg-primary text-black font-bold text-xs uppercase tracking-wider rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20 flex items-center gap-2 border-0 hidden"
+                id="downloadBtn" type="button" hidden>
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                  <polyline points="7 10 12 15 17 10" />
+                  <line x1="12" y1="15" x2="12" y2="3" />
+                </svg>
+                <span>Descargar reporte</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- Main Layout Grid -->
+          <div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+
+            <!-- Left Column: Weekly Calendar & View Options (8 cols) -->
+            <div class="lg:col-span-8 space-y-8">
+
+              <!-- Weekly Calendar Panel -->
+              <div
+                class="card p-6 bg-gradient-to-br from-[#0a0a0a] to-[#111] border-white/5 relative overflow-hidden group">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="font-orbitron font-bold text-lg text-white flex items-center gap-2">
+                    <span class="text-primary italic">|</span> CALENDARIO SEMANAL DEL EQUIPO
+                  </h3>
+                  <div class="text-xs text-gray-300">
+                    Promedio semanal: <strong class="text-primary" id="adminWeeklyAverage">0 min</strong>
+                  </div>
+                </div>
+
+                <!-- Calendar Tools -->
+                <div class="flex flex-wrap items-center gap-3 mb-6">
+                  <select id="sellerFilter" aria-label="Filtrar vendedor"
+                    class="px-3 py-2 rounded-xl border border-white/5 bg-secondary/20 text-xs font-bold text-white outline-none">
+                    <option value="all">Todos los vendedores</option>
+                  </select>
+
+                  <div class="flex flex-wrap gap-1 bg-secondary/30 p-1 rounded-xl border border-white/5">
+                    <button
+                      class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-all"
+                      data-admin-activity-mode="training" type="button">Entrenamiento</button>
+                    <button
+                      class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-all"
+                      data-admin-activity-mode="closer" type="button">Closer</button>
+                    <button
+                      class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-all"
+                      data-admin-activity-mode="quizz" type="button">Quizz</button>
+                    <button
+                      class="px-3 py-1 rounded-lg text-[10px] font-bold uppercase tracking-wider text-gray-300 hover:text-white transition-all active bg-primary text-black"
+                      data-admin-activity-mode="all" type="button">All</button>
+                  </div>
+                </div>
+
+                <!-- Responsive Grid Wrapper -->
+                <div class="overflow-x-auto custom-scrollbar pb-2">
+                  <div id="adminWeeklyCalendar" class="grid gap-2 min-w-[620px]">
+                    <!-- Injected via JS -->
+                  </div>
+                </div>
+
+                <!-- Legend -->
+                <div
+                  class="flex flex-wrap items-center gap-4 mt-6 text-[10px] text-gray-400 font-bold uppercase tracking-wider border-t border-white/5 pt-4">
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#ff3365]"></i> 0 min</span>
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#f97316]"></i> 1 - 9 min</span>
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#f5b21a]"></i> 10 - 19 min</span>
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#22c66f]"></i> 20 - 30 min</span>
+                  <span class="flex items-center gap-1.5"><i
+                      class="w-2.5 h-2.5 rounded-full inline-block bg-[#2f80ed]"></i> +30 min</span>
+                </div>
+              </div>
+
+              <!-- Calendar View Settings Panel -->
+              <div class="card p-6 bg-[#0a0a0a] border-white/5">
+                <h3 class="font-orbitron font-bold text-lg text-white mb-6 flex items-center gap-2">
+                  <span class="text-primary italic">▤</span> VISTA DEL CALENDARIO <span
+                    class="text-xs text-muted-foreground font-sans font-normal">(RANGO Y NAVEGACIÓN)</span>
+                </h3>
+
+                <div class="space-y-4">
+                  <!-- Navigation buttons -->
+                  <div class="grid grid-cols-2 sm:grid-cols-4 gap-3">
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      data-admin-calendar-view="day" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Diario</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Un día por
+                        vendedor</span>
+                    </button>
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-primary/20 bg-primary/10 text-primary transition-all text-center active"
+                      data-admin-calendar-view="week" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Semana</strong>
+                      <span class="text-[9px] text-primary/70 font-medium block mt-0.5 leading-tight">Lunes a
+                        domingo</span>
+                    </button>
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      data-admin-calendar-view="month" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Mensual</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Días hábiles del
+                        mes</span>
+                    </button>
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      id="adminTodayWeek" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Hoy</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Volver a la fecha
+                        actual</span>
+                    </button>
+                  </div>
+
+                  <div class="grid grid-cols-2 gap-3">
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      id="adminPrevRange" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Anterior</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Retroceder
+                        rango</span>
+                    </button>
+                    <button
+                      class="flex flex-col items-center justify-center p-3 rounded-xl border border-white/5 bg-secondary/20 text-gray-400 hover:text-white transition-all text-center"
+                      id="adminNextRange" type="button">
+                      <strong class="text-xs font-bold font-orbitron uppercase tracking-wider block">Siguiente</strong>
+                      <span class="text-[9px] text-gray-500 font-medium block mt-0.5 leading-tight">Avanzar rango</span>
+                    </button>
+                  </div>
+
+                  <!-- Date Pickers -->
+                  <div class="grid grid-cols-2 gap-3 pt-1">
+                    <div
+                      class="flex flex-col gap-1.5 p-3 rounded-xl border border-white/5 bg-secondary/20 justify-center">
+                      <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                        for="adminRangeStartInput">Inicio</label>
+                      <input id="adminRangeStartInput" type="date"
+                        class="bg-transparent border-0 outline-none text-white text-xs font-mono font-bold w-full mt-1"
+                        value="2024-05-06">
+                    </div>
+                    <div
+                      class="flex flex-col gap-1.5 p-3 rounded-xl border border-white/5 bg-secondary/20 justify-center">
+                      <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                        for="adminRangeEndInput">Fin</label>
+                      <input id="adminRangeEndInput" type="date"
+                        class="bg-transparent border-0 outline-none text-white text-xs font-mono font-bold w-full mt-1"
+                        value="2024-05-10">
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+            <!-- Right Column: Stats & Rankings (4 cols) -->
+            <div class="lg:col-span-4 space-y-8">
+
+              <!-- Stats Grid -->
+              <div class="grid grid-cols-2 gap-4" id="adminStats">
+                <!-- Injected via JS -->
+              </div>
+
+              <!-- Information Strip -->
+              <div
+                class="flex items-start gap-3 p-4 rounded-2xl border border-blue-500/20 bg-blue-500/5 text-gray-300 text-xs leading-relaxed">
+                <span
+                  class="w-5 h-5 rounded-full bg-blue-500 text-black flex items-center justify-center font-bold font-mono text-[10px] shrink-0">i</span>
+                <div>
+                  <strong class="text-white">Cada consulta en Closer equivale a 30 segundos.</strong><br>
+                  Cada respuesta en Quizz equivale a 30 segundos.
+                </div>
+              </div>
+
+              <!-- Weekly Ranking Panel -->
+              <div class="card p-6 bg-[#0a0a0a] border-white/5">
+                <div class="flex items-center justify-between mb-6">
+                  <h3 class="font-orbitron font-bold text-sm text-white tracking-widest flex items-center gap-2">
+                    <span class="text-primary italic">#</span> RANKING SEMANAL
+                  </h3>
+                  <div class="flex items-center gap-1.5">
+                    <button
+                      class="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center hover:bg-primary/20 hover:scale-110 active:scale-95 transition-all"
+                      id="adminViewAllBtn" title="Ver todo el ranking">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M2 12s3-7 10-7 10 7 10 7-3 7-10 7-10-7-10-7Z" />
+                        <circle cx="12" cy="12" r="3" />
+                      </svg>
+                    </button>
+                    <button
+                      class="w-8 h-8 rounded-xl bg-primary/10 border border-primary/20 text-primary flex items-center justify-center hover:bg-primary/20 hover:scale-110 active:scale-95 transition-all"
+                      id="adminDownloadRankingBtn" title="Descargar ranking">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4" />
+                        <polyline points="7 10 12 15 17 10" />
+                        <line x1="12" y1="15" x2="12" y2="3" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+
+                <div class="overflow-y-auto pr-1">
+                  <div class="ranking-list text-xs" id="adminRanking">
+                    <!-- Injected via JS -->
+                  </div>
+                </div>
+              </div>
+
+            </div>
+
+          </div>
+        </section>
+
+        <!-- VISTA ALFRED -->
+        <section id="view-alfred" class="view-section hidden pt-8">
+          <div class="max-w-3xl mx-auto px-4">
+            <!-- Header Alfred -->
+            <div class="text-center mb-10 animate-in fade-in slide-in-from-top-4 duration-700">
+              <div class="inline-block p-3 bg-primary/10 rounded-2xl mb-4 border border-primary/20">
+                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                  class="text-primary">
+                  <path d="M12 2v8" />
+                  <path d="m16 6-4 4-4-4" />
+                  <rect width="20" height="8" x="2" y="14" rx="2" />
+                  <path d="M6 18h.01" />
+                  <path d="M10 18h.01" />
+                </svg>
+              </div>
+              <h1 class="font-orbitron text-4xl font-bold tracking-tight text-white mb-2 uppercase">
+                Protocolo Alfred</h1>
+              <p class="text-gray-400 text-sm font-medium uppercase tracking-[0.2em]">Diagnóstico de
+                Cierre & Plan Operativo</p>
+            </div>
+
+            <!-- Questionnaire Card -->
+            <div id="alfred-quiz-container" class="relative">
+              <!-- Progress Bar -->
+              <div class="mb-8 px-2">
+                <div class="flex justify-between items-center mb-3">
+                  <span class="text-[10px] font-bold text-gray-300 uppercase tracking-widest"
+                    id="alfred-step-indicator">Fase 1 / 10</span>
+                  <span class="text-[10px] font-bold text-primary uppercase tracking-widest"
+                    id="alfred-progress-percent">10% COMPLETO</span>
+                </div>
+                <div class="w-full h-1.5 bg-secondary/50 rounded-full overflow-hidden border border-white/5">
+                  <div id="alfred-progress-bar"
+                    class="h-full bg-gradient-to-r from-primary to-emerald-400 transition-all duration-500 ease-out shadow-[0_0_10px_rgba(46,204,112,0.3)]"
+                    style="width: 10%"></div>
+                </div>
+              </div>
+
+              <!-- Question Card -->
+              <div id="question-card"
+                class="card bg-[#0a0a0a] border border-white/5 p-8 md:p-12 min-h-[400px] flex flex-col justify-center relative overflow-hidden group shadow-2xl">
+                <!-- Background Decoration -->
+                <div
+                  class="absolute -top-24 -right-24 w-64 h-64 bg-primary/5 rounded-full blur-3xl transition-transform duration-1000 group-hover:scale-110">
+                </div>
+
+                <div id="question-content" class="relative z-10 transition-all duration-300">
+                  <!-- Dynamic content will be injected here -->
+                  <div class="animate-pulse flex flex-col items-center">
+                    <div class="h-8 bg-white/5 w-3/4 rounded-lg mb-8"></div>
+                    <div class="space-y-4 w-full">
+                      <div class="h-16 bg-white/5 w-full rounded-2xl"></div>
+                      <div class="h-16 bg-white/5 w-full rounded-2xl"></div>
+                      <div class="h-16 bg-white/5 w-full rounded-2xl"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Result Card (Initially Hidden) -->
+              <div id="alfred-final-card" class="hidden animate-in zoom-in-95 duration-700">
+                <div
+                  class="card bg-black/80 border border-primary/20 backdrop-blur-xl p-8 md:p-12 relative overflow-hidden">
+                  <!-- Results injected here -->
+                  <div id="alfred-final-content" class="prose prose-invert max-w-none"></div>
+
+                  <div class="mt-10 pt-8 border-t border-white/5 flex justify-center">
+                    <button id="restart-alfred"
+                      class="text-xs font-bold text-gray-300 hover:text-white uppercase tracking-widest transition-colors flex items-center gap-2">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 12a9 9 0 0 0-9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                        <path d="M3 3v5h5" />
+                      </svg>
+                      Reiniciar Diagnóstico
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+        <!-- VISTA ENTRENADOR (LIVE MODE STYLE) -->
+        <section id="view-trainer"
+          class="view-section hidden h-[calc(100vh-64px)] relative overflow-hidden flex flex-col items-center justify-center">
+
+          <!-- Ambient Background -->
+          <div
+            class="absolute inset-0 bg-[radial-gradient(circle_at_center,_var(--tw-gradient-stops))] from-gray-900 via-gray-950 to-black z-0">
+          </div>
+
+          <!-- Header Minimal -->
+          <div class="absolute top-6 z-20 text-center w-full px-6">
+            <div class="max-w-md mx-auto">
+              <div class="flex justify-between items-center mb-2 px-1">
+                <div class="flex flex-col items-start">
+                  <span id="training-phase-name"
+                    class="text-md font-orbitron font-bold text-primary uppercase">Iniciando
+                    Protocolo</span>
+                  <span id="performance-score"
+                    class="text-sm font-mono text-gray-300 mt-1 uppercase tracking-wider">Certeza:
+                    --%</span>
+                </div>
+                <span id="training-progress-val" class="text-sm font-mono text-gray-300 tracking-[0.3em]">0%</span>
+              </div>
+              <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden border border-white/5">
+                <div id="training-progress-bar"
+                  class="h-full bg-primary w-0 transition-all duration-1000 shadow-[0_0_10px_rgba(46,204,112,0.5)]">
+                </div>
+              </div>
+
+              <!-- TRAINING TIMER BELOW PROGRESS BAR -->
+              <div id="training-timer-overlay"
+                class="mt-4 transition-all duration-500 opacity-0 pointer-events-none scale-90">
+                <div
+                  class="bg-black/80 border border-white/5 backdrop-blur-md px-6 py-4 rounded-3xl flex flex-col items-center gap-2 shadow-2xl border-t-4 border-t-primary/50">
+                  <div class="flex items-center gap-2 mb-1">
+                    <div id="training-status-dot" class="w-1.5 h-1.5 rounded-full bg-gray-500">
+                    </div>
+                    <span class="text-[9px] font-black text-gray-300 uppercase tracking-[0.2em]">Operational
+                      Mode</span>
+                  </div>
+                  <span class="font-mono text-3xl font-black text-white tabular-nums tracking-tighter"
+                    id="training-active-clock">00:10:00</span>
+
+                  <!-- START BUTTON -->
+                  <button id="training-timer-start-btn"
+                    class="mt-2 w-full py-2 bg-primary text-black text-[10px] font-black uppercase tracking-widest rounded-xl hover:scale-105 active:scale-95 transition-all shadow-lg shadow-primary/20">
+                    COMENZAR
+                  </button>
+
+                  <div class="h-0.5 w-12 bg-primary/30 rounded-full mt-1"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- CENTRAL VOICE ORB -->
+          <div class="relative z-10 flex flex-col items-center justify-center shrink-0 mb-12">
+            <!-- NEW MOLECULAR CANVAS ORB -->
+            <div id="orb-container" class="relative group cursor-pointer flex items-center justify-center">
+              <!-- TRAINING FINALIZED MESSAGE OVERLAY -->
+              <div id="training-finished-msg"
+                class="absolute inset-0 z-[70] flex items-center justify-center opacity-0 pointer-events-none transition-all duration-700">
+                <span
+                  class="font-orbitron text-3xl font-black text-primary text-center uppercase tracking-[0.3em] drop-shadow-[0_0_20px_rgba(46,204,112,0.6)]">
+                  Entrenamiento<br>Finalizado
+                </span>
+              </div>
+              <!-- Background Atmospheric Glow -->
+              <div id="orb-glow-outer"
+                class="absolute inset-0 bg-emerald-500/10 rounded-full blur-3xl transition-all duration-1000 scale-150 opacity-40">
+              </div>
+
+              <!-- Main Visual Canvas -->
+              <canvas id="trainer-orb-canvas" width="400" height="400"
+                class="relative z-10 drop-shadow-[0_0_30px_rgba(46,204,112,0.4)]"></canvas>
+            </div>
+
+            <!-- Status Text -->
+            <div id="trainer-status"
+              class="mt-8 text-2xl font-orbitron font-bold text-white/90 tracking-wide transition-all duration-300 min-h-[2rem] text-center px-4">
+              Escuchando...
+            </div>
+            <p class="text-lg text-primary mt-2 font-mono" id="trainer-substatus">Mantén presionado para
+              hablar</p>
+          </div>
+
+          <!-- MINIMAL CONTROLS -->
+          <div class="absolute bottom-12 z-20 flex items-center gap-8">
+            <button onclick="document.getElementById('chat-drawer').classList.toggle('translate-x-full')"
+              class="p-4 rounded-full bg-gray-800/50 text-gray-400 hover:text-white hover:bg-gray-700 backdrop-blur-sm transition border border-gray-700">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path>
+              </svg>
+            </button>
+
+            <!-- Main Interaction Button (Touch/Click) -->
+            <button id="trainer-mic-btn"
+              class="relative group p-8 rounded-full bg-white text-black hover:scale-105 active:scale-95 transition-all duration-200 shadow-[0_0_40px_rgba(255,255,255,0.2)]">
+              <div
+                class="absolute inset-0 rounded-full border-2 border-white/50 opacity-0 group-hover:opacity-100 group-hover:scale-110 transition-all duration-500">
+              </div>
+              <svg id="mic-icon" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24"
+                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M12 1a3 3 0 0 0-3 3v8a3 3 0 0 0 6 0V4a3 3 0 0 0-3-3z"></path>
+                <path d="M19 10v2a7 7 0 0 1-14 0v-2"></path>
+                <line x1="12" y1="19" x2="12" y2="23"></line>
+                <line x1="8" y1="23" x2="16" y2="23"></line>
+              </svg>
+            </button>
+
+            <button id="trainer-exit-btn"
+              class="p-4 rounded-full bg-red-500/10 text-red-400 hover:bg-red-500/20 backdrop-blur-sm transition border border-red-500/30">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+          </div>
+
+          <!-- CHAT HISTORY DRAWER (Collapsible) -->
+          <div id="chat-drawer"
+            class="absolute right-0 top-0 h-full w-full md:w-96 md:max-w-[24rem] bg-gray-950/95 border-l border-gray-800 backdrop-blur-xl transform translate-x-full transition-transform duration-300 ease-in-out z-30 flex flex-col shadow-2xl">
+            <div class="flex items-center justify-between p-4 border-b border-gray-800">
+              <h3 class="font-orbitron text-sm text-gray-300">TRANSCRIPCIÓN EN VIVO</h3>
+              <button onclick="document.getElementById('chat-drawer').classList.add('translate-x-full')"
+                class="text-gray-300 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+            </div>
+            <div id="trainer-chat-container" class="flex-1 overflow-y-auto p-4 space-y-6">
+              <!-- Chat content injected here -->
+              <div class="text-center text-gray-300 text-sm mt-10">La conversación aparecerá aquí...</div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA CLOSER (Closer Elite X) -->
+        <section id="view-closer" class="view-section hidden">
+          <div
+            class="flex flex-col items-center justify-center min-h-[70vh] py-12 px-4 animate-in fade-in zoom-in-95 duration-700">
+            <div class="w-full max-w-4xl mx-auto">
+              <!-- Header -->
+              <div class="text-center mb-12">
+                <h1
+                  class="font-orbitron text-5xl md:text-6xl font-black tracking-tighter text-primary drop-shadow-[0_0_30px_rgba(46,204,112,0.5)] mb-4">
+                  Closer Elite X
+                </h1>
+                <p class="text-gray-400 text-lg max-w-2xl mx-auto font-medium">
+                  Introduce la objeción de tu cliente para recibir un playbook táctico al instante.
+                </p>
+              </div>
+
+              <!-- Search/Input Bar Style -->
+              <div class="w-full max-w-3xl mx-auto">
+                <div
+                  class="relative bg-secondary/30 border border-white/5 rounded-[2rem] p-3 md:p-4 grid grid-cols-1 md:grid-cols-5 gap-4 items-center shadow-2xl backdrop-blur-sm transition-all duration-300 focus-within:border-primary/40 focus-within:ring-1 focus-within:ring-primary/20">
+                  <textarea id="client-input" placeholder="No estoy seguro, el precio me parece un poco elevado..."
+                    class="md:col-span-3 w-full bg-transparent border-none focus:ring-0 text-white placeholder-gray-600 text-lg resize-none min-h-[60px] md:min-h-[40px] px-4 py-2 leading-snug">No estoy seguro, el precio me parece un poco elevado y necesito pensarlo bien.</textarea>
+
+                  <button id="analyze-button"
+                    class="md:col-span-2 w-full px-8 py-4 bg-primary text-black font-bold rounded-2xl flex items-center justify-center gap-2 transition-all hover:scale-105 hover:shadow-[0_0_40px_rgba(46,204,112,0.4)] active:scale-95 whitespace-nowrap">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <path
+                        d="m12 3-1.912 5.813a2 2 0 0 1-1.275 1.275L3 12l5.813 1.912a2 2 0 0 1 1.275 1.275L12 21l1.912-5.813a2 2 0 0 1 1.275-1.275L21 12l-5.813-1.912a2 2 0 0 1-1.275-1.275L12 3Z" />
+                      <path d="M5 3v4" />
+                      <path d="M3 5h4" />
+                      <path d="M21 17v4" />
+                      <path d="M19 19h4" />
+                    </svg>
+                    <span class="button-text">Crear Playbook</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Result Container (Hidden by default) -->
+              <div id="analysis-result-container" class="mt-16 hidden w-full max-w-4xl mx-auto">
+                <div
+                  class="card bg-black/60 border border-primary/20 backdrop-blur-xl p-8 rounded-3xl relative overflow-hidden">
+                  <div class="absolute top-0 left-0 w-1 h-full bg-primary/50 shadow-[0_0_20px_rgba(57,255,20,0.5)]">
+                  </div>
+                  <h3 class="font-orbitron text-2xl font-bold mb-8 text-primary flex items-center gap-3">
+                    <span class="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                        class="text-primary">
+                        <path
+                          d="m16.02 2.863-13.39 6.6a.4.4 0 0 0 0 .717l13.39 6.6a.4.4 0 0 0 .54-.374V3.237a.4.4 0 0 0-.54-.374Z" />
+                        <path d="M13.5 13.5v9" />
+                        <path d="M18.5 13.5v9" />
+                      </svg>
+                    </span>
+                    Análisis Táctico
+                  </h3>
+                  <div id="strategy-content" class="prose prose-invert max-w-none text-gray-300">
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA CONOCIMIENTO -->
+        <section id="view-knowledge" class="view-section hidden">
+          <div class="text-center mb-12">
+            <h1 class="text-4xl font-orbitron font-bold tracking-tight text-primary">Base de Conocimiento</h1>
+            <p class="mt-3 text-lg text-gray-400 max-w-2xl mx-auto">Selecciona un módulo para poner
+              a prueba tus habilidades.</p>
+          </div>
+          <div id="knowledge-grid"
+            class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto cursor-pointer">
+          </div>
+          <!-- Knowledge Quiz Container -->
+          <div id="knowledge-quiz-container" class="mt-8 hidden max-w-2xl mx-auto">
+
+            <!-- Header: Navegación y Progreso -->
+            <div class="flex flex-col gap-4 mb-8">
+              <button id="back-to-modules"
+                class="text-sm text-gray-400 hover:text-white flex items-center self-start transition-colors">
+                ← Volver a Módulos
+              </button>
+
+              <div class="w-full">
+                <div class="flex justify-between text-xs font-bold text-gray-400 mb-2 font-orbitron">
+                  <span>PROGRESO DE LA MISIÓN</span>
+                  <span id="quiz-progress-text">0%</span>
+                </div>
+                <div
+                  class="w-full bg-black/40 border border-gray-700 rounded-full h-3 backdrop-blur-sm overflow-hidden relative">
+                  <div id="quiz-progress-bar"
+                    class="bg-gradient-to-r from-primary to-blue-500 h-full rounded-full transition-all duration-500 shadow-[0_0_10px_rgba(34,211,238,0.5)]"
+                    style="width: 0%"></div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Card del Quiz Actual -->
+            <div id="quiz-content" class="relative"></div>
+
+            <!-- Controles de Navegación -->
+            <div class="flex justify-between mt-8">
+              <button id="quiz-prev-btn" class="btn btn-secondary opacity-0 pointer-events-none transition-opacity">
+                ← Anterior
+              </button>
+              <button id="quiz-next-btn" class="btn btn-primary opacity-0 pointer-events-none transition-opacity">
+                Siguiente Fase →
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA WELLNESS -->
+        <section id="view-wellness" class="view-section hidden">
+          <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 max-w-7xl mx-auto px-4 py-8">
+
+            <!-- CARD IZQUIERDA: CONTADOR DE LATIDOS -->
+            <div
+              class="card bg-[#0a0a0a] border border-white/5 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden flex flex-col h-full">
+              <!-- Header -->
+              <div class="flex items-start gap-4 mb-10">
+                <div class="p-3 bg-primary/10 rounded-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-primary">
+                    <path d="M22 12h-4l-3 9L9 3l-3 9H2" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-orbitron text-xl font-bold text-white tracking-tight">Contador de
+                    Latidos</h3>
+                  <p class="text-gray-400 text-sm mt-1">Mide tu pulso en 60 segundos para monitorear
+                    tu estado.</p>
+                </div>
+              </div>
+
+              <!-- Timer & Pulse UI -->
+              <div class="flex flex-col items-center justify-center flex-1 py-4">
+                <!-- Circular Progress -->
+                <div class="relative w-48 h-48 mb-8">
+                  <svg class="w-full h-full transform -rotate-90">
+                    <circle cx="96" cy="96" r="88" stroke="currentColor" stroke-width="4" fill="transparent"
+                      class="text-white/5" />
+                    <circle id="pulse-timer-circle" cx="96" cy="96" r="88" stroke="currentColor" stroke-width="4"
+                      fill="transparent" stroke-dasharray="553" stroke-dashoffset="0"
+                      class="text-primary transition-all duration-1000 ease-linear shadow-[0_0_20px_rgba(46,204,112,0.4)]" />
+                  </svg>
+                  <div class="absolute inset-0 flex flex-col items-center justify-center">
+                    <span id="pulse-countdown" class="text-5xl font-black font-orbitron text-white">60</span>
+                    <span class="text-xs text-gray-300 uppercase tracking-widest font-bold">segundos</span>
+                  </div>
+                </div>
+
+                <!-- Counter Controls -->
+                <div class="flex items-center gap-8 mb-10">
+                  <button id="pulse-minus"
+                    class="w-12 h-12 rounded-full bg-secondary/30 border border-white/5 flex items-center justify-center text-white hover:bg-secondary/50 transition-all active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                  </button>
+                  <div class="text-center">
+                    <div id="pulse-count" class="text-5xl font-black font-orbitron text-white">0
+                    </div>
+                    <div class="text-[10px] text-gray-300 uppercase tracking-[0.2em] mt-1">latidos
+                      contados</div>
+                  </div>
+                  <button id="pulse-plus"
+                    class="w-12 h-12 rounded-full bg-secondary/30 border border-white/5 flex items-center justify-center text-white hover:bg-secondary/50 transition-all active:scale-95">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                      <line x1="12" y1="5" x2="12" y2="19" />
+                      <line x1="5" y1="12" x2="19" y2="12" />
+                    </svg>
+                  </button>
+                </div>
+
+                <!-- Action Buttons -->
+                <div class="flex gap-4 w-full px-4">
+                  <button id="pulse-start-btn"
+                    class="flex-1 py-4 bg-primary text-black font-bold rounded-2xl hover:shadow-[0_0_30px_rgba(46,204,112,0.4)] transition-all active:scale-95">Iniciar</button>
+                  <button id="pulse-save-btn"
+                    class="flex-1 py-4 bg-primary/20 text-primary font-bold rounded-2xl hover:bg-primary/30 transition-all active:scale-95 border border-primary/20">Guardar</button>
+                  <button id="pulse-reset-btn"
+                    class="flex-1 py-4 bg-secondary/50 text-gray-300 font-bold rounded-2xl hover:bg-secondary/80 transition-all active:scale-95 border border-white/5">Reiniciar</button>
+                </div>
+              </div>
+
+              <!-- History Section -->
+              <div class="mt-12 pt-8 border-t border-white/5">
+                <div class="flex items-center justify-between mb-6">
+                  <h4 class="font-orbitron text-sm font-bold text-white tracking-widest uppercase">
+                    Historial de Latidos</h4>
+                  <button id="pulse-clear-history"
+                    class="text-[10px] bg-secondary/50 hover:bg-secondary/80 text-gray-400 px-3 py-1.5 rounded-lg border border-white/5 uppercase font-bold tracking-tight transition-all">
+                    Limpiar
+                  </button>
+                </div>
+
+                <div class="grid grid-cols-4 gap-4 mb-6">
+                  <div class="text-center">
+                    <p class="text-[10px] text-gray-300 mb-1 uppercase font-bold">Promedio</p>
+                    <p id="pulse-avg" class="text-lg font-bold text-white">--</p>
+                  </div>
+                  <div class="text-center border-x border-white/5">
+                    <p class="text-[10px] text-gray-300 mb-1 uppercase font-bold">Último</p>
+                    <p id="pulse-last" class="text-lg font-bold text-white">--</p>
+                  </div>
+                  <div class="text-center border-r border-white/5">
+                    <p class="text-[10px] text-gray-300 mb-1 uppercase font-bold">Máximo</p>
+                    <p id="pulse-max" class="text-lg font-bold text-white">--</p>
+                  </div>
+                  <div class="text-center">
+                    <p class="text-[10px] text-gray-300 mb-1 uppercase font-bold">Mediciones</p>
+                    <p id="pulse-total" class="text-lg font-bold text-white">0</p>
+                  </div>
+                </div>
+
+                <div id="pulse-history-list" class="space-y-2 max-h-32 overflow-y-auto pr-2 custom-scrollbar">
+                  <p class="text-sm text-gray-300 text-center py-4">No hay mediciones guardadas</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- CARD DERECHA: RESPIRACIÓN GUIADA -->
+            <div
+              class="card bg-[#0a0a0a] border border-white/5 rounded-[2.5rem] p-8 shadow-2xl relative overflow-hidden flex flex-col h-full">
+              <!-- Header -->
+              <div class="flex items-start gap-4 mb-10">
+                <div class="p-3 bg-primary/10 rounded-xl">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                    class="text-primary">
+                    <path d="M5 8h10M5 12h14M5 16h6" />
+                  </svg>
+                </div>
+                <div>
+                  <h3 class="font-orbitron text-xl font-bold text-white tracking-tight">Respira
+                    Profundo</h3>
+                  <p class="text-gray-400 text-sm mt-1">Inhala y exhala cada 5 segundos para enfocar
+                    tu mente.</p>
+                </div>
+              </div>
+
+              <!-- Breathing UI -->
+              <div class="flex flex-col items-center justify-center flex-1 py-12">
+                <!-- Animated Orb -->
+                <div id="breathing-orb-container" class="relative w-48 h-48 mb-16 flex items-center justify-center">
+                  <!-- Inner Circles (Flower of Life) -->
+                  <div id="breathing-orb-1"
+                    class="absolute w-full h-full bg-primary/40 rounded-full blur-xl transition-all duration-[5000ms] ease-in-out scale-50 opacity-40">
+                  </div>
+                  <div id="breathing-orb-2"
+                    class="absolute w-40 h-40 bg-primary/30 rounded-full blur-lg transition-all duration-[5000ms] ease-in-out scale-50 opacity-60">
+                  </div>
+                  <div id="breathing-orb-3"
+                    class="absolute w-32 h-32 bg-primary/20 rounded-full blur-md transition-all duration-[5000ms] ease-in-out scale-50 opacity-80">
+                  </div>
+                  <div id="breathing-orb-core"
+                    class="relative w-24 h-24 bg-primary/40 rounded-full shadow-[0_0_60px_rgba(46,204,112,0.4)] flex items-center justify-center transition-all duration-[5000ms] ease-in-out scale-75">
+                    <div class="w-2 h-2 bg-white/40 rounded-full animate-ping"></div>
+                  </div>
+                </div>
+
+                <!-- Status Text -->
+                <div class="text-center mb-10">
+                  <h2 id="breathing-status" class="text-4xl font-black text-white font-orbitron tracking-tight mb-2">
+                    Listo
+                    para empezar</h2>
+                  <span id="breathing-timer" class="text-gray-300 font-mono text-xl tracking-widest">05:00</span>
+                </div>
+
+                <!-- Controls -->
+                <div class="flex gap-4 w-full px-12">
+                  <button id="breathing-start-btn"
+                    class="flex-1 py-5 bg-primary text-black font-bold rounded-2xl hover:shadow-[0_0_40px_rgba(46,204,112,0.4)] transition-all active:scale-95 flex items-center justify-center gap-3">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
+                      fill="currentColor" class="text-black">
+                      <polygon points="5 3 19 12 5 21 5 3" />
+                    </svg>
+                    Iniciar
+                  </button>
+                  <button id="breathing-reset-btn"
+                    class="w-1/3 py-5 bg-secondary/50 text-gray-300 font-bold rounded-2xl hover:bg-secondary/80 transition-all active:scale-95 border border-white/5 flex items-center justify-center gap-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                      stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                      <path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8" />
+                      <path d="M3 3v5h5" />
+                    </svg>
+                    Reiniciar
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </section>
+
+
+        <!-- VISTA SHADOW (LIVE REUNION) -->
+        <section id="view-copilot" class="view-section hidden pt-6">
+          <div class="max-w-6xl mx-auto px-4">
+            <header class="flex flex-col md:flex-row md:items-center justify-between gap-4 mb-8">
+              <div>
+                <h2 class="font-orbitron text-3xl font-black text-white tracking-tighter">SHADOW</h2>
+                <p class="text-gray-400 uppercase tracking-[0.2em] text-[10px] mt-1 font-bold">
+                  Asistencia Táctica en Tiempo Real (Meet / Zoom / Live)</p>
+              </div>
+              <div class="flex items-center gap-3">
+                <div id="copilot-status-indicator"
+                  class="flex items-center gap-2 px-4 py-2 bg-secondary/50 rounded-full border border-white/5">
+                  <div class="w-2 h-2 rounded-full bg-gray-600" id="copilot-status-dot"></div>
+                  <span class="text-[10px] font-bold text-gray-400 uppercase tracking-widest"
+                    id="copilot-status-text">Standby</span>
+                </div>
+                <button id="copilot-toggle-btn"
+                  class="btn btn-primary px-6 py-2.5 rounded-full flex items-center gap-2 shadow-lg shadow-primary/20 hover:scale-105 active:scale-95 transition-all">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                    <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                    <line x1="12" y1="19" x2="12" y2="22" />
+                    <line x1="8" y1="22" x2="16" y2="22" />
+                  </svg>
+                  <span id="copilot-toggle-text">ACTIVAR SHADOW</span>
+                </button>
+              </div>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <!-- Left: Live Transcription Stream -->
+              <div class="lg:col-span-2 space-y-6">
+                <div class="card bg-black/60 border-white/5 p-6 h-[500px] flex flex-col relative overflow-hidden group">
+                  <!-- Waveform visualization background -->
+                  <div
+                    class="absolute bottom-0 left-0 w-full h-32 flex items-end justify-center gap-1 px-4 opacity-20 pointer-events-none"
+                    id="copilot-waveform">
+                    <!-- Bars will be animated via JS -->
+                  </div>
+
+                  <div class="flex items-center justify-between mb-4 border-b border-white/5 pb-4">
+                    <h3 class="text-xs font-black text-gray-300 uppercase tracking-[0.2em]">Live
+                      Transcript Stream</h3>
+                    <div class="flex items-center gap-2">
+                      <span class="w-1.5 h-1.5 rounded-full bg-red-500 animate-pulse hidden" id="recording-node"></span>
+                      <span class="text-[9px] font-bold text-gray-300 uppercase" id="copilot-timer">00:00</span>
+                    </div>
+                  </div>
+
+                  <div id="copilot-transcript-container"
+                    class="flex-1 overflow-y-auto space-y-4 pr-2 custom-scrollbar scroll-smooth">
+                    <!-- Transcripts will appear here -->
+                    <div class="flex flex-col items-center justify-center h-full text-center space-y-4">
+                      <div
+                        class="w-16 h-16 rounded-full border-2 border-dashed border-gray-400 flex items-center justify-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+                          class="text-gray-400">
+                          <path d="M12 2a3 3 0 0 0-3 3v7a3 3 0 0 0 6 0V5a3 3 0 0 0-3-3Z" />
+                          <path d="M19 10v2a7 7 0 0 1-14 0v-2" />
+                          <line x1="12" y1="19" x2="12" y2="22" />
+                          <line x1="8" y1="22" x2="16" y2="22" />
+                        </svg>
+                      </div>
+                      <p class="text-xs uppercase font-bold tracking-widest text-gray-400">Inicia
+                        SHADOW para empezar el escaneo táctico</p>
+                    </div>
+                  </div>
+
+                  <div class="mt-4 pt-4 border-t border-white/5 flex gap-2">
+                    <input type="text" id="copilot-manual-input"
+                      class="input !mb-0 py-2 text-sm bg-white/5 border-white/10"
+                      placeholder="Escribe contexto adicional o dudas aquí...">
+                    <button id="copilot-send-manual"
+                      class="px-4 bg-secondary text-white rounded-xl border border-white/10 hover:bg-white/10 transition-all">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                        stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13" />
+                        <polygon points="22 2 15 22 11 13 2 9 22 2" />
+                      </svg>
+                    </button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Suggestions & Analytics -->
+              <div class="lg:col-span-1 space-y-6">
+                <div
+                  class="card bg-gradient-to-br from-primary/10 to-transparent border-primary/20 p-6 flex flex-col min-h-[500px]">
+                  <div class="flex items-center gap-2 mb-6">
+                    <span class="w-2 h-6 bg-primary rounded-full"></span>
+                    <h3 class="font-orbitron text-sm font-bold text-white tracking-widest">
+                      SUGERENCIAS TÁCTICAS</h3>
+                  </div>
+
+                  <div id="copilot-suggestions-container" class="flex-1 space-y-4">
+                    <!-- Dynamic Suggestions will appear here -->
+                    <div
+                      class="p-6 border border-white/5 rounded-2xl bg-white/5 flex flex-col items-center text-center justify-center h-48 italic text-xs text-gray-300">
+                      Esperando flujo de conversación para generar análisis...
+                    </div>
+                  </div>
+
+                  <div class="mt-8 pt-6 border-t border-white/5">
+                    <div class="flex flex-col gap-3">
+                      <div
+                        class="flex justify-between items-center text-[10px] font-black uppercase tracking-widest mb-1">
+                        <span class="text-gray-300">Control de Certeza</span>
+                        <span class="text-primary" id="copilot-certainty-val">--%</span>
+                      </div>
+                      <div class="h-1 w-full bg-white/5 rounded-full overflow-hidden">
+                        <div id="copilot-certainty-bar" class="h-full bg-primary w-0 transition-all duration-1000">
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+
+        <!-- VISTA ADMIN USUARIOS -->
+        <section id="view-admin-users"
+          class="view-section hidden animate-in fade-in slide-in-from-bottom-4 duration-500 py-6">
+          <div class="max-w-7xl mx-auto px-4">
+            <header class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 class="font-orbitron text-4xl font-black text-white tracking-tight">GESTIÓN DE <span
+                    class="text-primary">USUARIOS</span></h2>
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mt-2 font-bold">Todos los usuarios de la
+                  plataforma</p>
+              </div>
+              <div class="flex gap-2">
+                <input id="admin-users-search" type="text" placeholder="Buscar usuario..."
+                  class="input text-sm px-4 py-2 w-56">
+                <select id="admin-users-role-filter" class="input text-sm px-3 py-2 bg-secondary/40">
+                  <option value="">Todos los roles</option>
+                  <option value="super_admin">Super Admin</option>
+                  <option value="admin">Admin</option>
+                  <option value="user">Usuario</option>
+                </select>
+              </div>
+            </header>
+            <div class="card overflow-hidden">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-white/10 bg-black/30">
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Usuario</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Empresa</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Rol</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Creado</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-users-table-body">
+                  <tr>
+                    <td colspan="5" class="p-8 text-center text-gray-500">Cargando usuarios...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- Modal Cambiar Rol -->
+          <div id="modal-change-role"
+            class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center">
+            <div class="card p-8 max-w-md w-full mx-4 relative">
+              <button id="modal-change-role-close"
+                class="absolute top-4 right-4 text-gray-400 hover:text-white">✕</button>
+              <h3 class="font-orbitron text-xl font-bold text-white mb-1">Cambiar Rol</h3>
+              <p id="modal-change-role-user" class="text-gray-400 text-sm mb-6"></p>
+              <input type="hidden" id="modal-change-role-uid">
+              <div class="space-y-2 mb-6">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Nuevo Rol</label>
+                <select id="modal-change-role-select" class="input w-full">
+                  <option value="user">Usuario</option>
+                  <option value="admin">Admin</option>
+                  <option value="super_admin">Super Admin</option>
+                </select>
+              </div>
+              <div id="modal-change-role-company-container" class="space-y-2 mb-6">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Empresa</label>
+                <select id="modal-change-role-company" class="input w-full">
+                  <option value="">Sin empresa</option>
+                </select>
+              </div>
+              <button id="modal-change-role-submit" class="btn btn-primary w-full">Guardar Cambios</button>
+              <div id="modal-change-role-msg" class="text-sm text-center mt-3 hidden"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA ADMIN AUDITORIA -->
+        <section id="view-admin-audit" class="view-section hidden">
+          <h2 class="font-orbitron text-2xl mb-6 text-red-500">Registro de Auditoría</h2>
+          <div class="card p-0 overflow-y-auto max-h-[500px]">
+            <table class="w-full text-left border-collapse">
+              <thead>
+                <tr class="border-b border-gray-700 bg-black/20">
+                  <th class="p-4 font-semibold text-gray-400">Fecha</th>
+                  <th class="p-4 font-semibold text-gray-400">Admin</th>
+                  <th class="p-4 font-semibold text-gray-400">Acción</th>
+                  <th class="p-4 font-semibold text-gray-400">Detalles</th>
+                </tr>
+              </thead>
+              <tbody id="admin-audit-table-body">
+                <tr>
+                  <td colspan="4" class="p-4 text-center text-gray-300">Cargando registros...</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+
+
+        <!-- VISTA ADMIN COMPAÑÍA (multi-tenant) - Solo Super Admin -->
+        <section id="view-admin-company"
+          class="view-section hidden animate-in fade-in slide-in-from-bottom-4 duration-500 py-6">
+          <div class="max-w-7xl mx-auto px-4">
+            <header class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 class="font-orbitron text-4xl font-black text-white tracking-tight">GESTIÓN DE <span
+                    class="text-primary">EMPRESAS</span></h2>
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mt-2 font-bold">Administra todas las
+                  compañías de la plataforma</p>
+              </div>
+              <button id="btn-create-company" class="btn btn-primary flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <span>Nueva Empresa</span>
+              </button>
+            </header>
+
+            <!-- Stats Row -->
+            <div id="admin-company-stats" class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8">
+              <div class="card p-4 text-center">
+                <div id="stat-total-companies" class="font-orbitron text-3xl font-black text-primary">—</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Empresas Totales</div>
+              </div>
+              <div class="card p-4 text-center">
+                <div id="stat-active-companies" class="font-orbitron text-3xl font-black text-green-400">—</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Activas</div>
+              </div>
+              <div class="card p-4 text-center">
+                <div id="stat-total-users-companies" class="font-orbitron text-3xl font-black text-blue-400">—</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Usuarios Totales</div>
+              </div>
+              <div class="card p-4 text-center">
+                <div id="stat-companies-with-ai" class="font-orbitron text-3xl font-black text-purple-400">—</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Con Asistente IA</div>
+              </div>
+            </div>
+
+            <!-- Companies Table -->
+            <div class="card overflow-hidden">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-white/10 bg-black/30">
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Empresa</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Slug</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Estado</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Asistente IA</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Creada</th>
+                    <th class="p-4 text-[10px] font-black text-gray-400 uppercase tracking-widest">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="admin-companies-table-body">
+                  <tr>
+                    <td colspan="6" class="p-8 text-center text-gray-500">Cargando empresas...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <div id="company-detail" class="hidden"></div>
+            <div id="company-users-list" class="hidden"></div>
+          </div>
+
+          <!-- Modal Crear / Editar Empresa -->
+          <div id="modal-company"
+            class="fixed inset-0 bg-black/70 backdrop-blur-sm z-50 hidden items-center justify-center">
+            <div class="card p-8 max-w-md w-full mx-4 relative">
+              <button id="modal-company-close" class="absolute top-4 right-4 text-gray-400 hover:text-white">✕</button>
+              <h3 id="modal-company-title" class="font-orbitron text-xl font-bold text-white mb-6">Nueva Empresa</h3>
+              <input type="hidden" id="modal-company-id">
+              <div class="space-y-4">
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Nombre</label>
+                  <input type="text" id="modal-company-name" class="input w-full mt-1" placeholder="Ej. Empresa Acme">
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Slug (único)</label>
+                  <input type="text" id="modal-company-slug" class="input w-full mt-1" placeholder="ej. empresa-acme">
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">OpenAI Assistant ID
+                    (opcional)</label>
+                  <input type="text" id="modal-company-assistant-id" class="input w-full mt-1"
+                    placeholder="asst_xxxxxxxxxxxxxxxxxxxx">
+                </div>
+                <div class="flex items-center gap-3">
+                  <input type="checkbox" id="modal-company-active" checked class="w-4 h-4 accent-primary">
+                  <label for="modal-company-active" class="text-sm text-gray-300">Empresa activa</label>
+                </div>
+              </div>
+              <button id="modal-company-submit" class="btn btn-primary w-full mt-6">Guardar</button>
+              <div id="modal-company-msg" class="text-sm text-center mt-3 hidden"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA ADMIN INVITACIONES (multi-tenant) -->
+        <section id="view-admin-invitations"
+          class="view-section hidden animate-in fade-in slide-in-from-bottom-4 duration-500 py-6">
+          <div class="max-w-6xl mx-auto px-4">
+            <header class="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 class="font-orbitron text-4xl font-black text-white tracking-tight">GESTIÓN DE <span
+                    class="text-primary">INVITACIONES</span></h2>
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mt-2 font-bold">Invita nuevos miembros a
+                  tu compañía</p>
+              </div>
+              <button id="open-invitation-modal" class="btn btn-primary px-6 py-3 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                NUEVA INVITACIÓN
+              </button>
+            </header>
+
+            <div class="card overflow-hidden">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-gray-700 bg-black/20">
+                    <th class="p-4 font-semibold text-gray-400">Email</th>
+                    <th class="p-4 font-semibold text-gray-400">Rol</th>
+                    <th class="p-4 font-semibold text-gray-400">Estado</th>
+                    <th class="p-4 font-semibold text-gray-400">Creada</th>
+                    <th class="p-4 font-semibold text-gray-400">Acción</th>
+                  </tr>
+                </thead>
+                <tbody id="invitations-table-body">
+                  <tr>
+                    <td colspan="5" class="p-4 text-center text-gray-300">Cargando invitaciones...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </section>
+
+        <!-- MODAL INVITACIÓN -->
+        <div id="invitation-modal"
+          class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div class="card w-full max-w-md p-8 relative">
+            <button id="close-invitation-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <h3 class="font-orbitron text-2xl font-bold text-white mb-6">NUEVA INVITACIÓN</h3>
+            <form id="invitation-form" class="space-y-6">
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Email</label>
+                <input type="email" id="invitation-email" class="input" placeholder="correo@ejemplo.com" required>
+              </div>
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Rol</label>
+                <select id="invitation-role" class="input">
+                  <option value="user">Usuario</option>
+                  <option value="admin">Admin</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary w-full py-3 font-bold uppercase tracking-widest">ENVIAR
+                INVITACIÓN</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- VISTA ADMIN LISTA BLANCA - Solo Super Admin -->
+        <section id="view-admin-whitelist"
+          class="view-section hidden animate-in fade-in slide-in-from-bottom-4 duration-500 py-6">
+          <div class="max-w-5xl mx-auto px-4">
+            <header class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 class="font-orbitron text-4xl font-black text-white tracking-tight">LISTA <span
+                    class="text-primary">BLANCA</span></h2>
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mt-2 font-bold">Emails autorizados para
+                  registrarse en la plataforma</p>
+              </div>
+              <button id="btn-add-whitelist-email" class="btn btn-primary flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" />
+                  <line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <span>Añadir Email</span>
+              </button>
+            </header>
+
+            <!-- Stat -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+              <div class="card p-4 text-center">
+                <div id="stat-whitelist-total" class="font-orbitron text-3xl font-black text-primary">—</div>
+                <div class="text-[10px] text-gray-400 uppercase tracking-widest mt-1">Emails Autorizados</div>
+              </div>
+              <div class="card p-4 text-center col-span-2 flex items-center gap-3 justify-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="none" viewBox="0 0 24 24"
+                  stroke="currentColor" class="text-yellow-400 shrink-0">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                </svg>
+                <p class="text-xs text-gray-400 text-left">Solo los emails en esta lista pueden crear una cuenta.
+                  Agrega o elimina emails según sea necesario.</p>
+              </div>
+            </div>
+
+            <!-- Tabla -->
+            <div class="card overflow-hidden">
+              <table class="w-full text-left border-collapse">
+                <thead>
+                  <tr class="border-b border-white/10 bg-black/20">
+                    <th class="p-4 font-semibold text-gray-400 text-sm">Email</th>
+                    <th class="p-4 font-semibold text-gray-400 text-sm">Empresa</th>
+                    <th class="p-4 font-semibold text-gray-400 text-sm">Fecha de Registro</th>
+                    <th class="p-4 font-semibold text-gray-400 text-sm">Acciones</th>
+                  </tr>
+                </thead>
+                <tbody id="whitelist-table-body">
+                  <tr>
+                    <td colspan="4" class="p-8 text-center text-gray-500">Cargando...</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- MODAL: Agregar email -->
+          <div id="whitelist-modal"
+            class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+            <div class="card w-full max-w-md p-8 relative">
+              <button id="whitelist-modal-close" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="18" y1="6" x2="6" y2="18"></line>
+                  <line x1="6" y1="6" x2="18" y2="18"></line>
+                </svg>
+              </button>
+              <div class="flex items-center gap-3 mb-6">
+                <div class="w-10 h-10 rounded-xl bg-primary/20 flex items-center justify-center">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" viewBox="0 0 24 24"
+                    stroke="currentColor" class="text-primary">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                  </svg>
+                </div>
+                <h3 class="font-orbitron text-xl font-bold text-white">AÑADIR A LISTA BLANCA</h3>
+              </div>
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Email</label>
+                <input type="email" id="whitelist-email-input" class="input" placeholder="correo@ejemplo.com">
+              </div>
+              <div class="space-y-2 mt-4">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Empresa (opcional)</label>
+                <select id="whitelist-company-select" class="input">
+                  <option value="">-- Sin empresa --</option>
+                </select>
+              </div>
+              <button id="whitelist-modal-submit" class="btn btn-primary w-full mt-6">Agregar Email</button>
+              <div id="whitelist-modal-msg" class="text-sm text-center mt-3 hidden"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA ADMIN CONOCIMIENTO - Super Admin + Company Admin -->
+        <section id="view-admin-knowledge"
+          class="view-section hidden animate-in fade-in slide-in-from-bottom-4 duration-500 py-6">
+          <div class="max-w-6xl mx-auto px-4">
+            <header class="mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 class="font-orbitron text-4xl font-black text-white tracking-tight">BASE DE <span
+                    class="text-primary">CONOCIMIENTO</span></h2>
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mt-2 font-bold">Administra los módulos y
+                  contenidos de tu empresa</p>
+              </div>
+              <div id="knowledge-admin-super-select" class="hidden">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest mr-2">Empresa</label>
+                <select id="knowledge-admin-company-select" class="input text-sm px-3 py-2"></select>
+              </div>
+              <button id="btn-knowledge-admin-add-module" class="btn btn-primary flex items-center gap-2 hidden">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5">
+                  <line x1="12" y1="5" x2="12" y2="19" /><line x1="5" y1="12" x2="19" y2="12" />
+                </svg>
+                <span>Nuevo Módulo</span>
+              </button>
+            </header>
+
+            <!-- Module List -->
+            <div id="knowledge-admin-modules" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mb-8">
+              <p class="text-gray-400 col-span-full text-center py-8">Cargando...</p>
+            </div>
+
+            <!-- Module Detail (items) -->
+            <div id="knowledge-admin-module-detail" class="hidden">
+              <button id="knowledge-admin-back" class="text-sm text-gray-400 hover:text-white mb-4 flex items-center gap-1">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="15 18 9 12 15 6"/></svg>
+                Volver a módulos
+              </button>
+              <div class="flex items-center justify-between mb-4">
+                <h3 id="knowledge-admin-module-title" class="font-orbitron text-2xl font-bold text-white"></h3>
+                <div class="flex gap-2">
+                  <button id="btn-knowledge-admin-add-item" class="btn btn-primary text-sm px-4 py-2">+ Añadir Item</button>
+                  <button id="btn-knowledge-admin-delete-module" class="btn text-sm px-4 py-2 border border-red-500/30 text-red-400 hover:bg-red-500/10">Eliminar Módulo</button>
+                </div>
+              </div>
+              <div class="card overflow-hidden">
+                <table class="w-full text-left border-collapse">
+                  <thead>
+                    <tr class="border-b border-white/10 bg-black/30">
+                      <th class="p-3 text-[10px] font-black text-gray-400 uppercase tracking-widest w-12">#</th>
+                      <th class="p-3 text-[10px] font-black text-gray-400 uppercase tracking-widest">Concepto</th>
+                      <th class="p-3 text-[10px] font-black text-gray-400 uppercase tracking-widest">Pregunta</th>
+                      <th class="p-3 text-[10px] font-black text-gray-400 uppercase tracking-widest w-32">Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody id="knowledge-admin-items-body">
+                    <tr><td colspan="4" class="p-4 text-center text-gray-500">Cargando...</td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Modal: Añadir/Editar Item -->
+          <div id="modal-knowledge-item"
+            class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+            <div class="card w-full max-w-2xl p-8 relative max-h-[90vh] overflow-y-auto">
+              <button id="modal-knowledge-item-close" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+              <h3 id="modal-knowledge-item-title" class="font-orbitron text-xl font-bold text-white mb-6">AÑADIR ITEM</h3>
+              <input type="hidden" id="modal-knowledge-item-id">
+              <div class="grid grid-cols-1 gap-4">
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Concepto</label>
+                  <input id="modal-knowledge-item-concepto" class="input" placeholder="Nombre del concepto">
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Enseñanza</label>
+                  <textarea id="modal-knowledge-item-ensenanza" class="input" rows="3" placeholder="Explicación detallada..."></textarea>
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Ejemplo</label>
+                  <textarea id="modal-knowledge-item-ejemplo" class="input" rows="2" placeholder="Ejemplo práctico..."></textarea>
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Pregunta</label>
+                  <input id="modal-knowledge-item-pregunta" class="input" placeholder="Pregunta del desafío">
+                </div>
+                <div>
+                  <div class="flex items-center justify-between mb-2">
+                    <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Opciones</label>
+                    <button type="button" id="btn-knowledge-add-opcion" class="text-xs text-primary hover:text-primary/70 font-bold uppercase tracking-wider">+ Añadir opción</button>
+                  </div>
+                  <div id="conocimiento-opciones-container" class="space-y-2">
+                    <input class="input conocimiento-opcion-input" placeholder="Opción 1">
+                    <input class="input conocimiento-opcion-input" placeholder="Opción 2">
+                  </div>
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Respuesta Correcta</label>
+                  <input id="modal-knowledge-item-respuesta" class="input" placeholder="Debe coincidir exactamente con una opción">
+                </div>
+              </div>
+              <button id="modal-knowledge-item-submit" class="btn btn-primary w-full mt-6">Guardar</button>
+              <div id="modal-knowledge-item-msg" class="text-sm text-center mt-3 hidden"></div>
+            </div>
+          </div>
+
+          <!-- Modal: Nuevo Módulo -->
+          <div id="modal-knowledge-module"
+            class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+            <div class="card w-full max-w-md p-8 relative">
+              <button id="modal-knowledge-module-close" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
+              </button>
+              <h3 class="font-orbitron text-xl font-bold text-white mb-6">NUEVO MÓDULO</h3>
+              <div class="grid grid-cols-1 gap-4">
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">ID del módulo</label>
+                  <input id="modal-knowledge-module-id" class="input" placeholder="ej: tecnicas-avanzadas">
+                  <p class="text-[10px] text-gray-500 mt-1">Identificador único en minúsculas, usa guiones</p>
+                </div>
+                <div>
+                  <label class="text-xs font-bold text-gray-400 uppercase tracking-widest">Título</label>
+                  <input id="modal-knowledge-module-title" class="input" placeholder="Ej: Técnicas Avanzadas">
+                </div>
+              </div>
+              <button id="modal-knowledge-module-submit" class="btn btn-primary w-full mt-6">Crear Módulo</button>
+              <div id="modal-knowledge-module-msg" class="text-sm text-center mt-3 hidden"></div>
+            </div>
+          </div>
+        </section>
+
+        <!-- VISTA PRODUCTOS -->
+        <section id="view-products"
+          class="view-section hidden animate-in fade-in slide-in-from-bottom-4 duration-500 py-6">
+          <div class="max-w-6xl mx-auto px-4">
+            <header class="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 class="font-orbitron text-4xl font-black text-white tracking-tight">GESTIÓN DE <span
+                    class="text-primary">PRODUCTOS</span></h2>
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mt-2 font-bold">Crea y administra tu
+                  catálogo de ventas</p>
+              </div>
+              <button id="add-product-btn" class="btn btn-primary px-6 py-3 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                  stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                  <line x1="12" y1="5" x2="12" y2="19"></line>
+                  <line x1="5" y1="12" x2="19" y2="12"></line>
+                </svg>
+                NUEVO PRODUCTO
+              </button>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="products-grid">
+              <!-- Productos se cargarán aquí -->
+              <div class="card p-8 text-center opacity-50 border-dashed border-2 border-white/10">
+                <p class="text-gray-400">Cargando productos...</p>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- MODAL PRODUCTO -->
+        <div id="product-modal"
+          class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div class="card w-full max-w-md p-8 relative">
+            <button id="close-product-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <h3 id="product-modal-title" class="font-orbitron text-2xl font-bold text-white mb-6">NUEVO PRODUCTO</h3>
+            <form id="product-form" class="space-y-6">
+              <input type="hidden" id="product-id">
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Nombre del
+                  Producto</label>
+                <input type="text" id="product-name" class="input" placeholder="Ej: Membresía Elite" required>
+              </div>
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Precio ($)</label>
+                <input type="number" id="product-price" class="input" placeholder="0.00" step="0.01" required>
+              </div>
+              <button type="submit" class="btn btn-primary w-full py-3 font-bold uppercase tracking-widest">GUARDAR
+                PRODUCTO</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- VISTA CLIENTES -->
+        <section id="view-clients"
+          class="view-section hidden animate-in fade-in slide-in-from-bottom-4 duration-500 py-6">
+          <div class="max-w-6xl mx-auto px-4">
+            <header class="mb-10 flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div>
+                <h2 class="font-orbitron text-4xl font-black text-white tracking-tight">CENTRO DE <span
+                    class="text-primary">CLIENTES</span></h2>
+                <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mt-2 font-bold">Gestión de prospectos y
+                  cierre de ventas</p>
+              </div>
+              <div class="flex flex-col md:flex-row gap-3">
+                <select id="clients-filter"
+                  class="input bg-black/40 border-white/10 text-xs py-2 !mb-0 h-auto cursor-pointer">
+                  <option value="all">Todos los Clientes</option>
+                  <option value="closed">Ventas Cerradas</option>
+                  <option value="prospect">Prospectos (Sin Ventas)</option>
+                </select>
+                <button id="add-client-btn"
+                  class="btn btn-primary px-6 min-w-[200px] py-3 flex items-center justify-center gap-2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none"
+                    stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="12" y1="5" x2="12" y2="19"></line>
+                    <line x1="5" y1="12" x2="19" y2="12"></line>
+                  </svg>
+                  NUEVO CLIENTE
+                </button>
+              </div>
+            </header>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6" id="clients-grid">
+              <!-- Clientes se cargarán aquí -->
+            </div>
+          </div>
+        </section>
+
+        <!-- MODAL CLIENTE -->
+        <div id="client-modal"
+          class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div class="card w-full max-w-md p-8 relative">
+            <button id="close-client-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <h3 id="client-modal-title" class="font-orbitron text-2xl font-bold text-white mb-6">NUEVO CLIENTE</h3>
+            <form id="client-form" class="space-y-4">
+              <input type="hidden" id="client-id">
+              <div class="grid grid-cols-2 gap-4">
+                <div class="space-y-1">
+                  <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Nombre*</label>
+                  <input type="text" id="client-first-name" class="input py-2" placeholder="Nombre" required>
+                </div>
+                <div class="space-y-1">
+                  <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Apellido*</label>
+                  <input type="text" id="client-last-name" class="input py-2" placeholder="Apellido" required>
+                </div>
+              </div>
+              <div class="space-y-1">
+                <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Correo
+                  (Opcional)</label>
+                <input type="email" id="client-email" class="input py-2" placeholder="email@ejemplo.com">
+              </div>
+              <div class="space-y-1">
+                <label class="text-[10px] font-bold text-gray-400 uppercase tracking-widest ml-1">Celular
+                  (Opcional)</label>
+                <input type="tel" id="client-phone" class="input py-2" placeholder="+51 ...">
+              </div>
+              <button type="submit" class="btn btn-primary w-full py-3 mt-4 font-bold uppercase tracking-widest">GUARDAR
+                CLIENTE</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- MODAL VENTA -->
+        <div id="sale-modal"
+          class="fixed inset-0 z-[210] hidden items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+          <div class="card w-full max-w-md p-8 relative">
+            <button id="close-sale-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+                stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"></line>
+                <line x1="6" y1="6" x2="18" y2="18"></line>
+              </svg>
+            </button>
+            <h3 class="font-orbitron text-2xl font-bold text-white mb-2">REGISTRAR VENTA</h3>
+            <p id="sale-client-name" class="text-primary text-xs font-bold uppercase tracking-widest mb-6">CLIENTE: ...
+            </p>
+            <form id="sale-form" class="space-y-6">
+              <input type="hidden" id="sale-client-id">
+              <div class="space-y-2">
+                <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Seleccionar
+                  Productos</label>
+                <div id="sale-products-list"
+                  class="space-y-2 max-h-60 overflow-y-auto p-2 bg-white/5 rounded-xl border border-white/5">
+                  <!-- Lista de productos con checkboxes -->
+                </div>
+              </div>
+              <div class="flex justify-between items-center pt-4 border-t border-white/10">
+                <span class="text-gray-400 font-bold uppercase tracking-widest text-xs">Total Venta:</span>
+                <span id="sale-total-display" class="text-2xl font-black text-white font-rajdhani">$0.00</span>
+              </div>
+              <button type="submit" class="btn btn-primary w-full py-3 font-bold uppercase tracking-widest">CONFIRMAR
+                CIERRE</button>
+            </form>
+          </div>
+        </div>
+
+
+        <!-- VISTA PERFIL -->
+        <section id="view-profile"
+          class="view-section hidden animate-in fade-in slide-in-from-bottom-4 duration-500 py-6">
+          <div class="max-w-4xl mx-auto px-4">
+            <header class="mb-10 text-center md:text-left">
+              <h2 class="font-orbitron text-4xl font-black text-white tracking-tight">IDENTIDAD <span
+                  class="text-primary">OPERATIVA</span></h2>
+              <p class="text-gray-400 uppercase tracking-[0.3em] text-[10px] mt-2 font-bold">Configuración
+                de Perfil de Agente</p>
+            </header>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              <!-- Left: Profile Picture -->
+              <div class="lg:col-span-1 space-y-6">
+                <div class="card p-6 flex flex-col items-center">
+                  <div class="relative group">
+                    <div class="w-40 h-40 rounded-full bg-gradient-to-tr from-primary to-blue-600 p-1">
+                      <div
+                        class="w-full h-full rounded-full bg-gray-900 overflow-hidden flex items-center justify-center">
+                        <img id="profile-preview-img" src="" class="w-full h-full object-cover hidden">
+                        <span id="profile-preview-initial" class="text-5xl font-bold text-white font-orbitron">U</span>
+                      </div>
+                    </div>
+                    <label for="profile-avatar-input"
+                      class="absolute bottom-2 right-2 w-10 h-10 bg-primary rounded-full flex items-center justify-center cursor-pointer shadow-lg hover:bg-emerald-400 transition-colors border-4 border-gray-900">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none"
+                        stroke="black" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z">
+                        </path>
+                        <circle cx="12" cy="13" r="4"></circle>
+                      </svg>
+                    </label>
+                    <input type="file" id="profile-avatar-input" class="hidden"
+                      accept="image/jpeg, image/png, image/webp">
+                  </div>
+                  <div class="mt-6 text-center">
+                    <h3 id="profile-info-name" class="text-xl font-bold text-white font-rajdhani">
+                      Agente</h3>
+                    <p id="profile-info-email" class="text-sm text-gray-300 font-mono">Cargando...
+                    </p>
+                  </div>
+                  <div class="w-full mt-6 pt-6 border-t border-white/5 space-y-4">
+                    <div class="flex justify-between items-center text-xs">
+                      <span class="text-gray-300 uppercase font-bold tracking-widest">Estado</span>
+                      <span class="text-primary font-bold">OPERATIVO</span>
+                    </div>
+                    <div class="flex justify-between items-center text-xs">
+                      <span class="text-gray-300 uppercase font-bold tracking-widest">Nivel de
+                        Acceso</span>
+                      <span id="profile-info-role" class="text-blue-400 font-bold uppercase">USUARIO</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Right: Form Details -->
+              <div class="lg:col-span-2">
+                <form id="profile-form" class="card p-8 space-y-8">
+                  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-2">
+                      <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Nombre</label>
+                      <input type="text" id="profile-first-name" class="input" placeholder="Nombre">
+                    </div>
+                    <div class="space-y-2">
+                      <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Apellido</label>
+                      <input type="text" id="profile-last-name" class="input" placeholder="Apellido">
+                    </div>
+                    <div class="space-y-2 md:col-span-2">
+                      <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Apodo
+                        (Alias Operativo)</label>
+                      <input type="text" id="profile-nickname" class="input font-mono text-primary"
+                        placeholder="Ej: Zero, Maverick, Phoenix">
+                    </div>
+                    <div class="space-y-2 md:col-span-2">
+                      <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Correo
+                        Electrónico</label>
+                      <input type="email" id="profile-email-readonly" class="input opacity-50 cursor-not-allowed"
+                        readonly>
+                    </div>
+                    <div class="space-y-2 md:col-span-2">
+                      <label class="text-xs font-bold text-gray-400 uppercase tracking-widest ml-1">Descripción
+                        / Bio Profesional</label>
+                      <textarea id="profile-bio" rows="4" class="input resize-none"
+                        placeholder="Breve descripción de tus objetivos y experiencia en el cierre de ventas..."></textarea>
+                    </div>
+                  </div>
+
+                  <div class="pt-4 flex items-center gap-4">
+                    <button type="submit" id="save-profile-btn" class="btn btn-primary px-8 flex-1 md:flex-none">
+                      GUARDAR IDENTIDAD
+                    </button>
+                    <div id="profile-save-status" class="text-sm font-bold animate-pulse hidden">
+                    </div>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>
+  </div>
+
+  <!-- NOTIFICACIÓN DE LOGRO (TOAST) -->
+  <div id="achievement-toast" class="fixed bottom-10 left-1/2 -translate-x-1/2 z-[100] hidden">
+    <div
+      class="bg-black/90 border border-primary/30 backdrop-blur-xl px-8 py-6 rounded-[2.5rem] shadow-[0_0_50px_rgba(46,204,112,0.3)] animate-in fade-in slide-in-from-bottom-10 duration-700 flex items-center gap-6">
+      <div
+        class="w-16 h-16 rounded-full bg-primary/20 border border-primary/30 flex items-center justify-center text-primary shadow-[0_0_20px_rgba(46,204,112,0.2)]">
+        <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
+          <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
+          <path d="M4 22h16" />
+          <path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22" />
+          <path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22" />
+          <path d="M18 2H6v7a6 6 0 0 0 12 0V2Z" />
+        </svg>
+      </div>
+      <div>
+        <p class="text-primary font-black font-orbitron text-[10px] uppercase tracking-[0.3em] mb-1">¡LOGRO
+          DESBLOQUEADO!</p>
+        <h4 id="toast-achievement-name" class="text-2xl font-black text-white font-rajdhani">OPERACIÓN ÉLITE
+        </h4>
+        <p id="toast-achievement-desc" class="text-gray-400 text-xs">Has completado tu primera sesión táctica.
+        </p>
+      </div>
+      <div class="ml-4 pl-6 border-l border-white/10 text-center">
+        <p class="text-[10px] text-gray-300 font-bold uppercase mb-1">RECOMPENSA</p>
+        <p class="text-xl font-black text-primary" id="toast-achievement-points">+50 PTS</p>
+      </div>
+    </div>
+  </div>
+
+  <div id="tutorial-modal"
+    class="fixed inset-0 z-[200] hidden items-center justify-center bg-black/90 backdrop-blur-md p-8">
+    <div class="relative w-full max-w-5xl mx-auto">
+      <button id="close-tutorial-modal"
+        class="absolute -top-14 right-0 text-white hover:text-primary transition-colors bg-black/50 rounded-full p-2 backdrop-blur-sm">
+        <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none"
+          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <line x1="18" y1="6" x2="6" y2="18"></line>
+          <line x1="6" y1="6" x2="18" y2="18"></line>
+        </svg>
+      </button>
+      <div class="relative rounded-2xl overflow-hidden bg-white/5 border border-primary/20 p-5">
+        <div class="relative pb-[56.25%] h-0">
+          <iframe id="tutorial-video" class="absolute top-0 left-0 w-full h-full"
+            src="https://www.youtube.com/embed/5gPMiM0h6o4?autoplay=0" title="Tutorial" frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen>
+          </iframe>
+        </div>
+      </div>
+      <div class="text-center mt-6">
+        <p class="text-gray-400 text-sm uppercase tracking-widest font-bold">Guía Rápida de la Plataforma</p>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- Entry Point for Vite -->
+  <script type="module" src="/src/app.ts?t=1784140640769"></script>
+</body>
+
+</html>

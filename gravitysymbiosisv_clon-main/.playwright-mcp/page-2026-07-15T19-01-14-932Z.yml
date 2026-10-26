@@ -1,0 +1,72 @@
+- generic [ref=f114e2]:
+  - navigation [ref=f114e4]:
+    - link "GRΛVITY SYMBIOSIS" [ref=f114e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=f114e6]: GRΛVITY
+      - generic [ref=f114e7]: SYMBIOSIS
+    - list [ref=f114e8]:
+      - listitem [ref=f114e9]:
+        - link "Problema" [ref=f114e10] [cursor=pointer]:
+          - /url: "#problem"
+      - listitem [ref=f114e11]:
+        - link "Módulos" [ref=f114e12] [cursor=pointer]:
+          - /url: "#modules"
+      - listitem [ref=f114e13]:
+        - link "Symbiosis" [ref=f114e14] [cursor=pointer]:
+          - /url: "#symbiosis"
+      - listitem [ref=f114e15]:
+        - link "Precio" [ref=f114e16] [cursor=pointer]:
+          - /url: "#pricing"
+    - generic [ref=f114e17]:
+      - link "Iniciar Sesión" [ref=f114e18] [cursor=pointer]:
+        - /url: /login
+      - link "Solicitar Demo" [ref=f114e19]:
+        - /url: /request-demo
+  - generic [ref=f114e22]:
+    - generic [ref=f114e23]:
+      - generic [ref=f114e24]: // Solicitar Demo
+      - heading "AGENDAR DEMO" [level=2] [ref=f114e25]
+      - paragraph [ref=f114e26]: Descubre cómo Gravity puede transformar tu equipo comercial.
+    - generic [ref=f114e29]:
+      - generic [ref=f114e30]:
+        - generic [ref=f114e31]:
+          - text: Nombre completo
+          - textbox "Ej. Juan Pérez" [active] [ref=f114e32]
+        - generic [ref=f114e33]:
+          - text: Email corporativo
+          - textbox "tu@empresa.com" [ref=f114e34]
+      - generic [ref=f114e35]:
+        - generic [ref=f114e36]:
+          - text: Teléfono
+          - textbox "+51 999 888 777" [ref=f114e37]
+        - generic [ref=f114e38]:
+          - text: Nombre de la empresa
+          - textbox "Ej. TechCorp S.A.C." [ref=f114e39]
+      - generic [ref=f114e40]:
+        - text: Tamaño del equipo comercial
+        - combobox [ref=f114e41] [cursor=pointer]:
+          - option "— Selecciona —" [disabled] [selected]
+          - option "1 - 5 vendedores"
+          - option "6 - 20 vendedores"
+          - option "21 - 50 vendedores"
+          - option "Más de 50 vendedores"
+      - generic [ref=f114e42]:
+        - text: Mensaje
+        - textbox "Cuéntanos sobre tu equipo y qué desafíos enfrentan..." [ref=f114e43]
+      - button "ENVIAR SOLICITUD" [ref=f114e44]
+    - link "← Volver al inicio" [ref=f114e49] [cursor=pointer]:
+      - /url: /
+  - text: ──── MÁS RÁPIDO POPULAR
+  - generic [ref=f114e50]:
+    - link "↑ VOLVER AL INICIO" [ref=f114e51] [cursor=pointer]:
+      - /url: "#"
+    - generic [ref=f114e52]:
+      - link "Privacidad" [ref=f114e53] [cursor=pointer]:
+        - /url: "#"
+      - link "Términos" [ref=f114e54] [cursor=pointer]:
+        - /url: "#"
+      - link "Blog" [ref=f114e55] [cursor=pointer]:
+        - /url: "#"
+      - link "Contacto" [ref=f114e56] [cursor=pointer]:
+        - /url: "#"
+    - generic [ref=f114e57]: © 2025 Gravity AI · B2B SaaS

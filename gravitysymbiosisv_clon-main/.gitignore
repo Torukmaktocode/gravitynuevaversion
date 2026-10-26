@@ -1,0 +1,45 @@
+.env
+!.env.example
+.env.*
+node_modules/
+dist/
+build/
+tmp/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+venv/
+env/
+*.log
+*.mp3
+*.mp4
+*.webm
+*.txt
+!requirements.txt
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.gemini/
+supa_config_dump.txt
+module_check_output.txt
+response.txt
+test_results*.txt
+temp_*.js
+temp_*.py
+
+# AI and Agent workspaces
+.agents/
+.cursor/
+.cline/
+.aider/
+.ai/
+# Local AI Documentation
+.ai_docs/
+
+# Tools with hardcoded tokens
+backend/tools/get_keys.py
+backend/tools/check_supa.py
+backend/tools/fix_supa_config.py

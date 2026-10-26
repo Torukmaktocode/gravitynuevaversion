@@ -1,0 +1,49 @@
+- generic [ref=f107e2]:
+  - navigation [ref=f107e3]:
+    - link "GRΛVITY SYMBIOSIS" [ref=f107e4] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=f107e5]: GRΛVITY
+      - generic [ref=f107e6]: SYMBIOSIS
+    - list [ref=f107e7]:
+      - listitem [ref=f107e8]:
+        - link "Problema" [ref=f107e9] [cursor=pointer]:
+          - /url: "#problem"
+      - listitem [ref=f107e10]:
+        - link "Módulos" [ref=f107e11] [cursor=pointer]:
+          - /url: "#modules"
+      - listitem [ref=f107e12]:
+        - link "Symbiosis" [ref=f107e13] [cursor=pointer]:
+          - /url: "#symbiosis"
+      - listitem [ref=f107e14]:
+        - link "Precio" [ref=f107e15] [cursor=pointer]:
+          - /url: "#pricing"
+    - generic [ref=f107e16]:
+      - link "Iniciar Sesión" [ref=f107e17] [cursor=pointer]:
+        - /url: /login
+      - link "Solicitar Demo" [ref=f107e18]:
+        - /url: /request-demo
+  - generic [ref=f107e21]:
+    - generic [ref=f107e22]:
+      - generic [ref=f107e23]: // Contacto
+      - heading "HABLE CONTIGO" [level=2] [ref=f107e24]
+      - paragraph [ref=f107e25]: Estamos aquí para resolver tus dudas.
+    - generic [ref=f107e48]:
+      - heading "¡MENSAJE ENVIADO!" [level=3] [ref=f107e53]
+      - paragraph [ref=f107e54]: Gracias por contactarnos. Te responderemos a la brevedad.
+      - paragraph [ref=f107e55]: contacto@gravitysymbiosis.com
+      - link "VOLVER AL INICIO" [ref=f107e56] [cursor=pointer]:
+        - /url: /
+  - text: ──── MÁS RÁPIDO POPULAR
+  - generic [ref=f107e40]:
+    - link "↑ VOLVER AL INICIO" [ref=f107e41] [cursor=pointer]:
+      - /url: "#"
+    - generic [ref=f107e42]:
+      - link "Privacidad" [ref=f107e43] [cursor=pointer]:
+        - /url: /privacy
+      - link "Términos" [ref=f107e44] [cursor=pointer]:
+        - /url: /terms
+      - link "Blog" [ref=f107e45] [cursor=pointer]:
+        - /url: "#"
+      - link "Contacto" [ref=f107e46] [cursor=pointer]:
+        - /url: /contact
+    - generic [ref=f107e47]: © 2025 Gravity AI · B2B SaaS

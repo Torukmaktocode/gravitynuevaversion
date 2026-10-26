@@ -1,0 +1,71 @@
+- generic [active] [ref=f74e1]:
+  - generic [ref=f74e2]:
+    - navigation [ref=f74e4]:
+      - link "GRΛVITY SYMBIOSIS" [ref=f74e5] [cursor=pointer]:
+        - /url: "#"
+        - generic [ref=f74e6]: GRΛVITY
+        - generic [ref=f74e7]: SYMBIOSIS
+      - list [ref=f74e8]:
+        - listitem [ref=f74e9]:
+          - link "Problema" [ref=f74e10] [cursor=pointer]:
+            - /url: "#problem"
+        - listitem [ref=f74e11]:
+          - link "Módulos" [ref=f74e12] [cursor=pointer]:
+            - /url: "#modules"
+        - listitem [ref=f74e13]:
+          - link "Symbiosis" [ref=f74e14] [cursor=pointer]:
+            - /url: "#symbiosis"
+        - listitem [ref=f74e15]:
+          - link "Precio" [ref=f74e16] [cursor=pointer]:
+            - /url: "#pricing"
+      - generic [ref=f74e17]:
+        - link "Iniciar Sesión" [ref=f74e18] [cursor=pointer]:
+          - /url: /login
+        - link "Solicitar Demo" [ref=f74e19]:
+          - /url: /request-demo
+    - generic [ref=f74e22]:
+      - generic [ref=f74e23]:
+        - generic [ref=f74e24]: // Contacto
+        - heading "HABLE CONTIGO" [level=2] [ref=f74e25]
+        - paragraph [ref=f74e26]: Estamos aquí para resolver tus dudas.
+      - generic [ref=f74e30]:
+        - generic [ref=f74e31]:
+          - generic [ref=f74e32]:
+            - text: Nombre completo
+            - textbox "Ej. Juan Pérez" [ref=f74e33]
+          - generic [ref=f74e34]:
+            - text: Email
+            - textbox "tu@email.com" [ref=f74e35]
+        - generic [ref=f74e36]:
+          - text: Asunto
+          - textbox "¿En qué podemos ayudarte?" [ref=f74e37]
+        - generic [ref=f74e38]:
+          - text: Mensaje
+          - textbox "Cuéntanos detalladamente..." [ref=f74e39]
+        - button "ENVIAR MENSAJE" [ref=f74e40]
+    - text: ──── MÁS RÁPIDO POPULAR
+    - generic [ref=f74e41]:
+      - link "↑ VOLVER AL INICIO" [ref=f74e42] [cursor=pointer]:
+        - /url: "#"
+      - generic [ref=f74e43]:
+        - link "Privacidad" [ref=f74e44] [cursor=pointer]:
+          - /url: /privacy
+        - link "Términos" [ref=f74e45] [cursor=pointer]:
+          - /url: /terms
+        - link "Blog" [ref=f74e46] [cursor=pointer]:
+          - /url: "#"
+        - link "Contacto" [ref=f74e47] [cursor=pointer]:
+          - /url: /contact
+      - generic [ref=f74e48]: © 2025 Gravity AI · B2B SaaS
+  - generic:
+    - button "Close" [ref=f74e49] [cursor=pointer]
+    - main [ref=f74e50]:
+      - list [ref=f74e52]:
+        - listitem:
+          - list
+        - listitem [ref=f74e53]:
+          - list [ref=f74e54]:
+            - listitem [ref=f74e55]:
+              - generic [ref=f74e56]: "[ESLint] 'showLandingSubpage' is defined but never used. (@typescript-eslint/no-unused-vars)"
+              - generic [ref=f74e57]: /Users/whiz/Workspace/gravitysymbiosisv1/frontend/src/app.ts:74:10
+              - code [ref=f74e59]: "72 | const LANDING_SUBPAGES = ['view-request-demo', 'view-privacy', 'view-terms', 'view-contact']; 73 | > 74 | function showLandingSubpage(id: string) { | ^^^^^^^^^^^^^^^^^^ 75 | LANDING_SUBPAGES.forEach(sp => { 76 | const el = document.getElementById(sp); 77 | if (el) { el.classList.add('hidden'); }"

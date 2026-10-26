@@ -1,0 +1,746 @@
+/* ── OpenAI-inspired Light Theme — Gravity white canvas #ffffff + UI/UX Pro Max Glassmorphism ──
+   Research: openai.com/brand + Apps SDK + open-design.ai/openai
+   Palette: bg #ffffff, fg #0d0d0d, muted #6e6e6e/#9b9b9b, border #e5e5e5, surface #fafafa/#f5f5f5, accent #8b5cf6 (morado neón, hover #6d28d9)
+   Type: Plus Jakarta Sans (skill) / Inter fallback, 16px base, 1.65 lh, tight tracking, radii 12px / pill 9999px
+   Style: Glassmorphism — backdrop blur 12-16px, subtle border rgba(0,0,0,0.06), light reflection, Z-depth (skill)
+*/
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+html.theme-openai,
+html.theme-openai body {
+  background: #ffffff !important;
+  color: #0d0d0d !important;
+}
+html.theme-openai {
+  --void: #ffffff;
+  --deep: #fafafa;
+  --plasma: #8b5cf6;
+  --fire: #6d28d9;
+  --gold: #8b5cf6;
+  --space-1: 4px; --space-2: 8px; --space-3: 12px; --space-4: 16px; --space-6: 24px; --space-8: 32px; --space-12: 48px; --space-16: 64px;
+  --white: #0d0d0d;
+  --dim: #6e6e6e;
+  --grid: rgba(0,0,0,0.035);
+  --glow-c: rgba(139,92,246,0.10);
+  --glow-f: rgba(139,92,246,0.06);
+  --background: 0 0% 100%;
+  --foreground: 0 0% 5%;
+  --card: 0 0% 100%;
+  --card-foreground: 0 0% 5%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 0 0% 5%;
+  --primary: 258 89% 66%;
+  --primary-foreground: 0 0% 100%;
+  --secondary: 0 0% 96%;
+  --secondary-foreground: 0 0% 8%;
+  --muted: 0 0% 96%;
+  --muted-foreground: 0 0% 43%;
+  --accent: 0 0% 96%;
+  --accent-foreground: 0 0% 5%;
+  --border: 0 0% 90%;
+  --input: 0 0% 90%;
+  --ring: 258 89% 66%;
+  --radius: 12px;
+}
+
+/* ── Global typography reset — breathe like OpenAI (Inter everywhere, no clash) ── */
+html.theme-openai body,
+html.theme-openai h1, html.theme-openai h2, html.theme-openai h3, html.theme-openai h4,
+html.theme-openai p, html.theme-openai a, html.theme-openai button, html.theme-openai input,
+html.theme-openai label, html.theme-openai span, html.theme-openai div {
+  font-family: 'Plus Jakarta Sans', 'Inter', system-ui, -apple-system, "Segoe UI", sans-serif !important;
+}
+html.theme-openai body {
+  font-size: 16px !important;
+  line-height: 1.65 !important;
+  letter-spacing: -0.011em !important;
+  -webkit-font-smoothing: antialiased;
+  font-weight: 400;
+}
+html.theme-openai strong, html.theme-openai b { font-weight: 600 !important; }
+
+/* ── Kill dark-only chrome ── */
+html.theme-openai #cursor, html.theme-openai #cursor-ring { display: none !important; }
+html.theme-openai body { cursor: auto !important; }
+html.theme-openai #bg-canvas { opacity: 0.12 !important; }
+html.theme-openai .grid-overlay { opacity: 0.28 !important; }
+html.theme-openai .noise { opacity: 0.012 !important; }
+
+/* ── Nav — white, hairline, no clip ── */
+/* ── Nav — white, hairline, no clip (SOLO el nav del landing: el selector genérico
+   contaminaba el .sidebar-nav de la app con padding 16px 32px y partía el rail) ── */
+html.theme-openai #nav-landing {
+  background: rgba(255,255,255,0.86) !important;
+  border-bottom: 1px solid #e5e5e5 !important;
+  backdrop-filter: blur(12px) !important;
+  padding: 16px 32px !important;
+}
+html.theme-openai .nav-logo { color: #0d0d0d !important; }
+html.theme-openai .nav-logo .logo-main { color: #0d0d0d !important; -webkit-text-stroke: 0 !important; text-shadow: none !important; }
+html.theme-openai .nav-logo .logo-sub { color: #0d0d0d !important; }
+html.theme-openai .sidebar-header span { color: #0d0d0d !important; }
+html.theme-openai .sidebar-header span.text-primary,
+html.theme-openai .sidebar-header .text-primary { color: #8b5cf6 !important; }
+html.theme-openai .logo-main {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 1.25rem !important;
+  font-weight: 700 !important;
+  letter-spacing: -0.02em !important;
+  text-transform: none !important;
+  margin-right: 0 !important;
+}
+html.theme-openai .logo-sub {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 0.62rem !important;
+  letter-spacing: 0.14em !important;
+  text-transform: uppercase !important;
+  font-weight: 500 !important;
+  color: #6e6e6e !important;
+  margin-right: 0 !important;
+}
+html.theme-openai .logo-sub::before, html.theme-openai .logo-sub::after {
+  background: #e5e5e5 !important; opacity: 1 !important; width: 28px !important;
+}
+html.theme-openai .nav-links { gap: 28px !important; }
+html.theme-openai .nav-links a {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 0.82rem !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  font-weight: 500 !important;
+  color: #6e6e6e !important;
+}
+html.theme-openai .nav-links a:hover { color: #0d0d0d !important; }
+html.theme-openai .nav-actions { gap: 10px !important; }
+html.theme-openai .nav-login,
+html.theme-openai .nav-cta {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 0.82rem !important;
+  letter-spacing: -0.01em !important;
+  text-transform: none !important;
+  font-weight: 600 !important;
+  clip-path: none !important;
+  border-radius: 9999px !important;
+  padding: 10px 18px !important;
+  box-shadow: none !important;
+  transform: none !important;
+}
+html.theme-openai .nav-login {
+  background: #ffffff !important; color: #0d0d0d !important; border: 1px solid #e5e5e5 !important;
+}
+html.theme-openai .nav-login:hover { background: #fafafa !important; border-color: #0d0d0d !important; }
+html.theme-openai .nav-cta { background: #0d0d0d !important; color: #ffffff !important; border: 1px solid #0d0d0d !important; }
+html.theme-openai .nav-cta:hover { background: #1a1a1a !important; }
+
+/* ── Hero — editorial, tight, no neon ── */
+html.theme-openai #hero { padding: 120px 32px 72px !important; }
+html.theme-openai .hero-eyebrow {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 0.72rem !important; letter-spacing: 0.14em !important; text-transform: uppercase !important;
+  font-weight: 600 !important; color: #6e6e6e !important; margin-bottom: 20px !important;
+}
+html.theme-openai .hero-eyebrow::before, html.theme-openai .hero-eyebrow::after { opacity: 0.25 !important; }
+html.theme-openai .hero-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-weight: 800 !important; letter-spacing: -0.03em !important; line-height: 0.92 !important;
+  text-transform: none !important; font-size: clamp(3.2rem, 8vw, 6.5rem) !important;
+}
+html.theme-openai .hero-title .line1 { color: #0d0d0d !important; }
+html.theme-openai .hero-title .line2 {
+  color: #0d0d0d !important; -webkit-text-stroke: 0 !important; text-shadow: none !important;
+}
+html.theme-openai .hero-title .line2::after { display: none !important; }
+html.theme-openai .hero-title .line3 { color: #8b5cf6 !important; }
+html.theme-openai .hero-sub {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 1.06rem !important; line-height: 1.7 !important; color: #3c3c3c !important; max-width: 560px !important;
+}
+html.theme-openai .hero-sub strong { color: #0d0d0d !important; font-weight: 600 !important; }
+html.theme-openai .hero-actions { gap: 12px !important; margin-top: 32px !important; }
+html.theme-openai .hero-stats { gap: 32px !important; margin-top: 48px !important; }
+html.theme-openai .hero-stats .stat-num { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-size: 1.9rem !important; font-weight: 700 !important; color: #0d0d0d !important; text-shadow: none !important; letter-spacing: -0.02em !important; }
+html.theme-openai .stat-label { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-size: 0.68rem !important; letter-spacing: 0.08em !important; color: #6e6e6e !important; text-transform: uppercase !important; font-weight: 500 !important; }
+html.theme-openai .stat-divider { background: #e5e5e5 !important; }
+html.theme-openai .scroll-hint, html.theme-openai .scroll-line { opacity: 0.5 !important; }
+
+/* ── Buttons — pill / 12px, Inter, no clip ── */
+html.theme-openai .btn-primary,
+html.theme-openai .btn-secondary,
+html.theme-openai .price-btn,
+html.theme-openai .btn {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+  font-size: 0.88rem !important; letter-spacing: -0.01em !important; text-transform: none !important;
+  font-weight: 600 !important; clip-path: none !important; border-radius: 9999px !important;
+  padding: 12px 20px !important; box-shadow: none !important; transform: none !important;
+}
+html.theme-openai .btn-primary { background: #0d0d0d !important; color: #ffffff !important; border: 1px solid #0d0d0d !important; }
+html.theme-openai .btn-primary:hover { background: #1a1a1a !important; }
+html.theme-openai .btn-secondary { background: #ffffff !important; color: #0d0d0d !important; border: 1px solid #e5e5e5 !important; }
+html.theme-openai .btn-secondary:hover { background: #fafafa !important; border-color: #0d0d0d !important; }
+html.theme-openai .price-btn { background: #ffffff !important; color: #0d0d0d !important; border: 1px solid #e5e5e5 !important; }
+html.theme-openai .price-btn:hover, html.theme-openai .featured .price-btn { background: #0d0d0d !important; color: #ffffff !important; border-color: #0d0d0d !important; }
+html.theme-openai #training-timer-start-btn,
+html.theme-openai #test-login-enter,
+html.theme-openai #test-login-back {
+  clip-path: none !important; border-radius: 9999px !important; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; letter-spacing: -0.01em !important; text-transform: none !important;
+}
+
+/* ── Login del modo lab (/lab) — adaptación al tema claro (la vista está maquetada en oscuro) ── */
+html.theme-openai #view-test-login { background: #fafafa !important; }
+html.theme-openai #view-test-login .card {
+  background: #ffffff !important; border-color: #fde68a !important;
+  box-shadow: 0 1px 3px rgba(16,24,40,.05), 0 12px 40px rgba(0,0,0,.05) !important;
+}
+html.theme-openai #view-test-login h1 { color: #0d0d0d !important; }
+html.theme-openai #view-test-login h1 span { color: #8b5cf6 !important; }
+html.theme-openai #view-test-login [class*="text-amber"] { color: #92400e !important; }
+html.theme-openai #view-test-login [class*="bg-amber-500/5"],
+html.theme-openai #view-test-login [class*="bg-amber-500/15"] {
+  background-color: #fffbeb !important; border-color: #fde68a !important;
+}
+html.theme-openai #view-test-login .text-gray-500,
+html.theme-openai #view-test-login li,
+html.theme-openai #view-test-login p { color: #6e6e6e !important; }
+html.theme-openai #view-test-login .text-gray-400 { color: #6e6e6e !important; }
+html.theme-openai #view-test-login .text-gray-600 { color: #9b9b9b !important; }
+html.theme-openai #view-test-login [class*="border-white/10"] { border-color: #e5e5e5 !important; }
+html.theme-openai #view-test-login #test-login-back {
+  background: #ffffff !important; color: #4b5563 !important; border: 1px solid #e5e5e5 !important;
+  text-transform: uppercase !important; letter-spacing: 0.08em !important;
+}
+html.theme-openai #view-test-login #test-login-back:hover {
+  background: #fafafa !important; color: #0d0d0d !important; border-color: #0d0d0d !important;
+}
+
+/* ── Sections — white, hairline, breathing ── */
+html.theme-openai #problem, html.theme-openai #modules, html.theme-openai #symbiosis,
+html.theme-openai #how, html.theme-openai #pricing, html.theme-openai #cta { background: #ffffff !important; padding: 88px 32px !important; }
+html.theme-openai .section-tag {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-size: 0.68rem !important; letter-spacing: 0.12em !important;
+  text-transform: uppercase !important; font-weight: 600 !important; color: #8b5cf6 !important; margin-bottom: 12px !important;
+}
+html.theme-openai .section-title, html.theme-openai .symbiosis-title, html.theme-openai .cta-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-weight: 800 !important; letter-spacing: -0.03em !important;
+  line-height: 0.95 !important; text-transform: none !important; color: #0d0d0d !important;
+  font-size: clamp(2.2rem, 5vw, 3.8rem) !important; margin-bottom: 24px !important;
+}
+html.theme-openai .section-title span, html.theme-openai .symbiosis-title span, html.theme-openai .cta-title span { color: #0d0d0d !important; text-shadow: none !important; }
+html.theme-openai .modules-desc, html.theme-openai .symbiosis-sub, html.theme-openai .cta-sub { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #6e6e6e !important; font-size: 0.98rem !important; line-height: 1.65 !important; }
+html.theme-openai .problem-grid, html.theme-openai .modules-grid, html.theme-openai .pricing-cards, html.theme-openai .symbiosis-metrics { gap: 16px !important; }
+
+/* cards */
+html.theme-openai .problem-card, html.theme-openai .module-card, html.theme-openai .price-card,
+html.theme-openai .metric, html.theme-openai .how-step, html.theme-openai .how-visual,
+html.theme-openai .alfred-section, html.theme-openai .alfred-feat {
+  background: #ffffff !important; border: 1px solid #e5e5e5 !important; border-radius: 12px !important;
+  box-shadow: none !important; clip-path: none !important; padding: 28px 24px !important;
+}
+html.theme-openai .problem-card:hover, html.theme-openai .module-card:hover, html.theme-openai .price-card:hover,
+html.theme-openai .metric:hover { border-color: #0d0d0d !important; transform: translateY(-2px) !important; box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important; }
+html.theme-openai .problem-card::before, html.theme-openai .module-card::after, html.theme-openai .metric::before, html.theme-openai .how-step.active::before { display: none !important; }
+html.theme-openai .problem-num { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-size: 2.2rem !important; font-weight: 700 !important; color: #0d0d0d !important; opacity: 0.06 !important; text-shadow: none !important; }
+html.theme-openai .problem-title, html.theme-openai .module-name, html.theme-openai .step-name, html.theme-openai .how-visual-title {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-weight: 700 !important; letter-spacing: -0.02em !important; color: #0d0d0d !important; text-transform: none !important;
+}
+html.theme-openai .problem-desc, html.theme-openai .module-desc, html.theme-openai .metric-label, html.theme-openai .how-visual-desc, html.theme-openai .feat-text { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #6e6e6e !important; line-height: 1.6 !important; }
+html.theme-openai .module-icon { background: #f5f5f5 !important; border: 1px solid #e5e5e5 !important; border-radius: 8px !important; clip-path: none !important; }
+html.theme-openai .module-label, html.theme-openai .price-label, html.theme-openai .step-num, html.theme-openai .alfred-badge {
+  font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-size: 0.68rem !important; letter-spacing: 0.1em !important; font-weight: 600 !important; color: #6e6e6e !important; text-transform: uppercase !important;
+}
+html.theme-openai .price-val, html.theme-openai .metric-val, html.theme-openai .alfred-title { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #0d0d0d !important; text-shadow: none !important; letter-spacing: -0.02em !important; }
+html.theme-openai .price-period, html.theme-openai .price-setup { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #6e6e6e !important; }
+
+/* CTA / symbiosis orbit */
+html.theme-openai #symbiosis::before { background: radial-gradient(ellipse, rgba(139,92,246,0.06) 0%, transparent 70%) !important; }
+html.theme-openai .orbit-center { background: #ffffff !important; border: 1px solid #e5e5e5 !important; box-shadow: none !important; }
+html.theme-openai .orbit-center-label { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #0d0d0d !important; text-shadow: none !important; }
+html.theme-openai .orbit-ring { border-color: #e5e5e5 !important; }
+html.theme-openai .orbit-dot { background: #8b5cf6 !important; box-shadow: none !important; }
+
+/* footer */
+html.theme-openai footer { border-top: 1px solid #e5e5e5 !important; background: #fafafa !important; padding: 32px !important; }
+html.theme-openai .footer-logo { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #0d0d0d !important; letter-spacing: -0.01em !important; text-transform: none !important; font-weight: 700 !important; opacity: 1 !important; }
+html.theme-openai .footer-copy, html.theme-openai .footer-links a { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #6e6e6e !important; letter-spacing: 0 !important; text-transform: none !important; }
+html.theme-openai .footer-links a:hover { color: #0d0d0d !important; }
+
+/* ── Dashboard / App ── */
+html.theme-openai .sidebar { background: #ffffff !important; border-right: 1px solid #e5e5e5 !important; backdrop-filter: none !important; }
+html.theme-openai .sidebar-header { border-bottom: 1px solid #e5e5e5 !important; }
+html.theme-openai .topbar { background: rgba(255,255,255,0.92) !important; border-bottom: 1px solid #e5e5e5 !important; backdrop-filter: blur(8px) !important; }
+html.theme-openai .card {
+  background: #ffffff !important; border: 1px solid #e5e5e5 !important; border-radius: 12px !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important; padding: 20px !important;
+}
+html.theme-openai .card:hover { border-color: #ddd6fe !important; transform: translateY(-1px) !important; box-shadow: 0 6px 20px rgba(139,92,246,0.08) !important; }
+/* Botón "MODO OSCURO" del dashboard eliminado (2026-10-14): el dashboard sigue al tema global. */
+html.theme-openai .nav-item { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-weight: 500 !important; color: #6e6e6e !important; border-radius: 8px !important; letter-spacing: -0.01em !important; }
+html.theme-openai .nav-item:hover, html.theme-openai .nav-item.active { background: #f5f5f5 !important; color: #0d0d0d !important; }
+html.theme-openai .nav-item svg { width: 18px !important; height: 18px !important; }
+html.theme-openai .input, html.theme-openai .demo-input {
+  background: #ffffff !important; border: 1px solid #e5e5e5 !important; color: #0d0d0d !important;
+  border-radius: 8px !important; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important;
+}
+html.theme-openai .input:focus, html.theme-openai .demo-input:focus { border-color: #0d0d0d !important; box-shadow: 0 0 0 3px rgba(139,92,246,0.12) !important; background: #ffffff !important; }
+html.theme-openai .btn { border-radius: 9999px !important; clip-path: none !important; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; letter-spacing: -0.01em !important; text-transform: none !important; }
+html.theme-openai #auth-modal { background: rgba(255,255,255,0.88) !important; backdrop-filter: blur(12px) !important; }
+html.theme-openai #auth-modal .card { box-shadow: 0 16px 40px rgba(0,0,0,0.08) !important; border-radius: 16px !important; border: 1px solid #e5e5e5 !important; }
+html.theme-openai .stat-value { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; font-weight: 700 !important; letter-spacing: -0.02em !important; }
+html.theme-openai .stat-label { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; letter-spacing: 0.06em !important; }
+html.theme-openai .role-badge { border-radius: 9999px !important; font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; letter-spacing: 0 !important; }
+html.theme-openai .dune-rise-text { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; letter-spacing: -0.02em !important; }
+html.theme-openai .alfred-plan-results h1, html.theme-openai .alfred-plan-results h2, html.theme-openai .alfred-plan-results h3 { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #0d0d0d !important; letter-spacing: -0.02em !important; }
+html.theme-openai .alfred-opt-btn { border-radius: 12px !important; border: 1px solid #e5e5e5 !important; }
+html.theme-openai .alfred-opt-btn:hover { border-color: #0d0d0d !important; background: #fafafa !important; }
+
+/* ── Closer — entrada suave: fondo aparece y texto sube con desvanecimiento ── */
+@keyframes closerBgFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes closerUpFade { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: translateY(0); } }
+@keyframes blink { 0%, 50% { opacity: 1; } 51%, 100% { opacity: 0; } }
+#view-closer:not(.hidden) #closer-bg-orb { animation: closerBgFade 700ms ease forwards; }
+#view-closer:not(.hidden) #closer-bg-soft { animation: closerBgFade 700ms ease 80ms forwards; }
+#view-closer:not(.hidden) #closer-title { animation: closerUpFade 600ms cubic-bezier(0.22,1,0.36,1) 120ms forwards; }
+#view-closer:not(.hidden) #closer-pill { animation: closerUpFade 600ms cubic-bezier(0.22,1,0.36,1) 260ms forwards; }
+#view-closer:not(.hidden) #closer-hint { animation: closerUpFade 500ms ease 380ms forwards; }
+#closer-bg-orb, #closer-bg-soft, #closer-title, #closer-pill, #closer-hint { opacity: 0; }
+
+/* ── Closer Elite — nuevo diseño legible en blanco ── */
+html.theme-openai #view-closer {
+  background: #ffffff;
+}
+html.theme-openai #view-closer::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(72% 48% at 50% 32%, rgba(139, 92, 246, 0.13) 0%, rgba(139, 92, 246, 0.05) 42%, transparent 74%),
+    radial-gradient(90% 55% at 50% 106%, rgba(139, 92, 246, 0.11) 0%, transparent 70%),
+    radial-gradient(55% 45% at 12% 100%, rgba(66, 133, 244, 0.09) 0%, transparent 68%),
+    radial-gradient(55% 45% at 88% 100%, rgba(155, 114, 203, 0.09) 0%, transparent 68%);
+  transition: opacity 0.6s ease;
+}
+html.theme-openai #view-closer.closer-sent::before {
+  opacity: 0;
+}
+@media (max-width: 768px) and (orientation: portrait) {
+  html.theme-openai #view-closer {
+    background: #ffffff;
+  }
+  html.theme-openai #view-closer::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background:
+      linear-gradient(to top, rgba(139, 92, 246, 0.34) 0%, rgba(139, 92, 246, 0.16) 25%, rgba(255, 255, 255, 0) 55%),
+      radial-gradient(60% 42% at 50% 100%, rgba(66, 133, 244, 0.14) 0%, transparent 70%),
+      radial-gradient(50% 38% at 15% 100%, rgba(155, 114, 203, 0.12) 0%, transparent 66%);
+    transition: opacity 0.6s ease;
+  }
+  html.theme-openai #view-closer.closer-sent::before {
+    opacity: 0;
+  }
+  html.theme-openai #view-closer.closer-sent .closer-composer {
+    background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%) !important;
+  }
+}
+html.theme-openai #closer-bg-grid { display: none !important; }
+html.theme-openai #closer-bg-orb { opacity: 0.5 !important; }
+html.theme-openai #closer-bg-orb .closer-orb { opacity: 0.35 !important; }
+
+/* Título e intro */
+html.theme-openai #closer-title { color: #0d0d0d !important; text-shadow: 0 0 24px rgba(139,92,246,0.18) !important; }
+html.theme-openai #closer-title .text-violet-400 { color: #6d28d9 !important; }
+html.theme-openai #view-closer header p { color: #6e6e6e !important; }
+
+/* Input pill — glass claro */
+html.theme-openai .closer-input {
+  background: #ffffff !important;
+  border: 1px solid #e5e5e5 !important;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.06) !important;
+}
+html.theme-openai .closer-input:focus-within {
+  border-color: #8b5cf6 !important;
+  box-shadow: 0 0 0 1px rgba(139,92,246,0.25), 0 10px 40px rgba(139,92,246,0.12) !important;
+}
+html.theme-openai #client-input { color: #0d0d0d !important; }
+html.theme-openai #client-input::placeholder { color: #9b9b9b !important; }
+html.theme-openai #closer-cursor { background: #0d0d0d !important; }
+html.theme-openai #closer-hint { color: #9b9b9b !important; }
+html.theme-openai #closer-hint .text-violet-400 { color: #6d28d9 !important; }
+
+/* Empty state */
+html.theme-openai .closer-empty-orb {
+  background: #f5f3ff !important;
+  border-color: #ddd6fe !important;
+  box-shadow: 0 0 30px rgba(139,92,246,0.12) !important;
+}
+html.theme-openai #closer-empty p { color: #0d0d0d !important; }
+html.theme-openai #closer-empty .text-gray-500 { color: #6e6e6e !important; }
+
+/* Card de análisis — texto plano sobre el lienzo (sin caja), estilo Gemini */
+html.theme-openai .closer-analysis {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}
+html.theme-openai .closer-analysis::before {
+  display: none !important;
+}
+
+/* Texto conversacional */
+html.theme-openai .closer-conv-p { color: #374151 !important; }
+html.theme-openai .closer-conv-p strong { color: #0d0d0d !important; }
+html.theme-openai .closer-conv-p em { color: #6d28d9 !important; }
+
+html.theme-openai .closer-playbook-mark { color: #6d28d9 !important; }
+html.theme-openai .closer-playbook-name { color: #0d0d0d !important; }
+
+/* Estrategias numeradas */
+html.theme-openai .closer-strategy::before {
+  background: transparent !important;
+  border: none !important;
+  color: #6d28d9 !important;
+}
+html.theme-openai .closer-strategy-title { color: #0d0d0d !important; }
+html.theme-openai .closer-strategy-text { color: #4b5563 !important; }
+
+/* Guiones / citas */
+html.theme-openai .closer-script {
+  background: transparent !important;
+  border: none !important;
+  border-left: 2px solid #8b5cf6 !important;
+}
+html.theme-openai .closer-script p { color: #374151 !important; }
+html.theme-openai .closer-script-label { color: #6d28d9 !important; }
+html.theme-openai .closer-script-killer {
+  background: transparent !important;
+  border: none !important;
+  border-left: 2px solid #8b5cf6 !important;
+}
+html.theme-openai .closer-conv-closing p { color: #6e6e6e !important; }
+html.theme-openai .closer-conv-closing strong { color: #6d28d9 !important; }
+
+/* Versiones profesionales y preguntas calibradas — legibles en blanco */
+html.theme-openai .closer-version {
+  background: transparent !important;
+  border: none !important;
+  border-left: 2px solid #8b5cf6 !important;
+}
+html.theme-openai .closer-version-full {
+  background: transparent !important;
+  border: none !important;
+  border-left-color: #8b5cf6 !important;
+}
+html.theme-openai .closer-version-tag { color: #6d28d9 !important; }
+html.theme-openai .closer-version-text { color: #374151 !important; }
+html.theme-openai .closer-version-text strong { color: #0d0d0d !important; }
+html.theme-openai .closer-calibrated-hint { color: #6e6e6e !important; }
+html.theme-openai .closer-calibrated-item {
+  background: transparent !important;
+  border: none !important;
+  border-left: 2px solid rgba(139,92,246,0.35) !important;
+  color: #374151 !important;
+}
+html.theme-openai .closer-calibrated-num {
+  background: transparent !important;
+  border: none !important;
+  color: #6d28d9 !important;
+}
+
+/* Burbuja de usuario — chip tonal suave (estilo Gemini), legible en blanco */
+html.theme-openai .closer-user-bubble {
+  background: #f0f4f9 !important;
+  border: 1px solid #e3e3e3 !important;
+  color: #1f1f1f !important;
+  box-shadow: none !important;
+}
+html.theme-openai .closer-thinking span { background: linear-gradient(135deg, #a78bfa, #7c3aed) !important; }
+html.theme-openai .closer-assistant-msg .closer-analysis { color: #0d0d0d !important; }
+
+/* Composer — sin caja blanca bajo el input (tema claro) */
+html.theme-openai .closer-composer {
+  background: transparent !important;
+}
+html.theme-openai .closer-chat-fade {
+  background: linear-gradient(to top, rgba(255, 255, 255, 0.6) 0%, rgba(255, 255, 255, 0) 100%) !important;
+}
+html.theme-openai .closer-input {
+  background: #ffffff !important;
+  border-color: #e5e7eb !important;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+}
+/* Modo expandido: la caja de texto con fondo sólido blanco sobre el resplandor */
+@media (min-width: 769px), (orientation: landscape) and (min-width: 640px) {
+  html.theme-openai #view-closer .closer-composer .closer-input {
+    background: #ffffff !important;
+    border-color: #e5e7eb !important;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.04) !important;
+  }
+  /* Tras responder: composer full-width con fundido blanco para que el texto
+     que pasa por detrás desaparezca (el pill queda centrado a 42rem) */
+  html.theme-openai #view-closer.closer-sent .closer-composer {
+    max-width: none;
+    background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0.6) 100%) !important;
+  }
+}
+
+/* trainer — keep orb teal but on white */
+html.theme-openai #view-trainer { background: #ffffff !important; }
+html.theme-openai #view-trainer > #trainer-ambient-bg { background: #ffffff !important; background-image: none !important; }
+html.theme-openai #trainer-mic-btn { background: #0d0d0d !important; color: #ffffff !important; box-shadow: none !important; border-radius: 9999px !important; }
+html.theme-openai #trainer-status { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #0d0d0d !important; }
+html.theme-openai #trainer-substatus { font-family: 'Plus Jakarta Sans', 'Inter', sans-serif !important; color: #8b5cf6 !important; }
+html.theme-openai #chat-drawer {
+  /* Glass coherente con los trainer-ctrl: translúcido + blur + borde sutil + highlight interior.
+     Tinte violeta sutil: sobre fondo blanco puro, un vidrio neutro es invisible — el tinte lo hace legible como panel. */
+  background: linear-gradient(180deg, rgba(242,236,253,0.66) 0%, rgba(230,220,250,0.48) 100%) !important;
+  border-left: 1px solid rgba(124,58,237,0.18) !important;
+  box-shadow: -12px 0 40px rgba(76,29,149,0.12), inset 1px 0 0 rgba(255,255,255,0.75) !important;
+  -webkit-backdrop-filter: blur(28px) saturate(1.5) !important;
+  backdrop-filter: blur(28px) saturate(1.5) !important;
+}
+html.theme-openai #chat-drawer > div:first-child {
+  border-bottom: 1px solid rgba(124,58,237,0.10) !important;
+}
+html.theme-openai #chat-drawer h3 { color: #6e6e6e !important; }
+html.theme-openai #chat-drawer button { color: #6e6e6e !important; }
+html.theme-openai #chat-drawer button:hover { color: #0d0d0d !important; background: rgba(15,23,42,0.05) !important; }
+html.theme-openai #trainer-chat-container { background: transparent !important; }
+/* Burbuja del usuario: vidrio violeta tenue (antes pill plano) */
+html.theme-openai #trainer-chat-container .msg-content {
+  color: #374151 !important;
+}
+html.theme-openai #trainer-chat-container .text-right > .msg-content {
+  background: linear-gradient(135deg, rgba(167,139,250,0.16) 0%, rgba(139,92,246,0.08) 100%) !important;
+  border: 1px solid rgba(124,58,237,0.14) !important;
+  color: #2e1065 !important;
+  box-shadow: 0 1px 2px rgba(76,29,149,0.06) !important;
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+}
+/* Perfil, Bienestar, Shadow, Conocimiento — legibles en blanco */
+html.theme-openai #view-profile .card,
+html.theme-openai #view-wellness .card,
+html.theme-openai #view-copilot .card,
+html.theme-openai #view-knowledge .card {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+}
+html.theme-openai #view-profile .text-white,
+html.theme-openai #view-wellness .text-white,
+html.theme-openai #view-copilot .text-white,
+html.theme-openai #view-knowledge .text-white { color: #0d0d0d !important; }
+html.theme-openai #view-profile .text-gray-400,
+html.theme-openai #view-wellness .text-gray-400,
+html.theme-openai #view-copilot .text-gray-400,
+html.theme-openai #view-knowledge .text-gray-400 { color: #6e6e6e !important; }
+html.theme-openai #view-profile .text-gray-300,
+html.theme-openai #view-wellness .text-gray-300,
+html.theme-openai #view-copilot .text-gray-300 { color: #4b5563 !important; }
+html.theme-openai #view-wellness .bg-\[\#0a0a0a\] { background: #ffffff !important; border-color: #e5e7eb !important; }
+html.theme-openai #view-copilot .bg-black\/60 { background: #ffffff !important; border-color: #e5e7eb !important; }
+/* trainer header — fix contraste en blanco (antes se perdía) */
+html.theme-openai #training-phase-name { color: #5b21b6 !important; } /* morado oscuro, no lavanda clara */
+html.theme-openai #performance-score,
+html.theme-openai #training-progress-val { color: #4b5563 !important; } /* gris oscuro, no #e5e7eb */
+html.theme-openai #view-trainer .h-1 { background: #f3f4f6 !important; border-color: #e5e7eb !important; }
+html.theme-openai #training-progress-bar { background: #7c3aed !important; box-shadow: 0 0 8px rgba(124,58,237,0.25) !important; }
+
+/* Entrenador — controles de vidrio en tema claro (elegantes y translúcidos) */
+html.theme-openai #view-trainer .trainer-ctrl {
+  background: rgba(15, 23, 42, 0.035) !important;
+  border: 1px solid rgba(15, 23, 42, 0.08) !important;
+  backdrop-filter: blur(16px) saturate(1.1) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.1) !important;
+  box-shadow: 0 8px 26px rgba(15, 23, 42, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+  color: #64748b !important;
+}
+html.theme-openai #view-trainer .trainer-ctrl:hover {
+  transform: translateY(-2px);
+  background: rgba(15, 23, 42, 0.06) !important;
+  border-color: rgba(139, 92, 246, 0.35) !important;
+  color: #0d0d0d !important;
+  box-shadow: 0 12px 30px rgba(139, 92, 246, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.9) !important;
+}
+html.theme-openai #view-trainer #trainer-mic-btn {
+  background: linear-gradient(160deg, #8b5cf6, #6d28d9) !important;
+  border: 1px solid rgba(255, 255, 255, 0.3) !important;
+  color: #ffffff !important;
+  box-shadow: 0 14px 40px rgba(139, 92, 246, 0.45), inset 0 1px 0 rgba(255, 255, 255, 0.3) !important;
+}
+html.theme-openai #view-trainer #trainer-mic-btn:hover {
+  background: linear-gradient(160deg, #9d74f8, #7c3aed) !important;
+  box-shadow: 0 18px 50px rgba(139, 92, 246, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.34) !important;
+}
+html.theme-openai #view-trainer #trainer-exit-btn {
+  background: rgba(244, 63, 94, 0.06) !important;
+  border: 1px solid rgba(244, 63, 94, 0.18) !important;
+  color: #e11d48 !important;
+  box-shadow: 0 8px 26px rgba(244, 63, 94, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.8) !important;
+}
+html.theme-openai #view-trainer #trainer-exit-btn:hover {
+  background: rgba(244, 63, 94, 0.12) !important;
+  border-color: rgba(244, 63, 94, 0.35) !important;
+  color: #be123c !important;
+}
+
+/* lab banner stays amber for visibility, but harmonized */
+html.theme-openai #lab-banner { background: #0d0d0d !important; color: #ffffff !important; }
+html.theme-openai #lab-banner a { color: #8b5cf6 !important; }
+
+/* ── Verse detrás de la esfera — morado neón suave degradado ── */
+html.theme-openai #orb-verse div { opacity: 0.32 !important; }
+html.theme-openai #orb-verse-soft div { opacity: 0.16 !important; }
+#orb-verse, #orb-verse-soft { transition: opacity 700ms ease; }
+@media (max-width: 768px) {
+  #orb-verse div { width: 420px !important; height: 420px !important; }
+  #orb-verse-soft div { width: 560px !important; height: 560px !important; }
+}
+
+/* ── Glassmorphism — skill UI/UX Pro Max: backdrop blur 12-16px, subtle border, Z-depth ── */
+html.theme-openai .card {
+  backdrop-filter: blur(16px) saturate(1.15) !important;
+  -webkit-backdrop-filter: blur(16px) saturate(1.15) !important;
+  background: rgba(255,255,255,0.82) !important;
+  border: 1px solid rgba(255,255,255,0.6) !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06), inset 0 1px 0 rgba(255,255,255,0.8) !important;
+}
+html.theme-openai .sidebar {
+  /* Blanco sólido uniforme: sin degradado ni saltos de color */
+  background: #ffffff !important;
+  border-right: 1px solid rgba(0,0,0,0.06) !important;
+  box-shadow: 8px 0 32px rgba(0,0,0,0.04) !important;
+}
+html.theme-openai .sidebar-nav {
+  background: transparent !important;
+}
+/* Sin líneas separadoras dentro del sidebar: degradado continuo */
+html.theme-openai .sidebar-header,
+html.theme-openai .sidebar-nav {
+  border-bottom-color: transparent !important;
+}
+html.theme-openai #sidebar-full-bottom {
+  border-top-color: transparent !important;
+}
+html.theme-openai .sidebar.collapsed,
+html.theme-openai .sidebar.collapsed .sidebar-header,
+html.theme-openai .sidebar.collapsed .sidebar-nav,
+html.theme-openai .sidebar.collapsed #sidebar-collapsed-toggle-wrap,
+html.theme-openai .sidebar.collapsed #sidebar-full-bottom,
+html.theme-openai .sidebar.collapsed #sidebar-mini-bottom {
+  /* Blanco opaco uniforme: evita que el fondo gris de detrás se transparente */
+  background: #ffffff !important;
+  background-image: none !important;
+  border-color: transparent !important;
+}
+html.theme-openai .sidebar.collapsed {
+  border-right: 1px solid #ececf2 !important;
+}
+html.theme-openai .sidebar.collapsed .nav-item { color: #6e6e6e !important; }
+html.theme-openai .sidebar.collapsed .nav-item:hover { background: #f5f5f5 !important; color: #0d0d0d !important; }
+html.theme-openai .sidebar.collapsed .nav-item.active { background: #0d0d0d !important; color: #ffffff !important; }
+html.theme-openai .topbar {
+  /* Fade Gemini general (todas las vistas en claro): sólido arriba → transparente abajo.
+     El contenido (ej. mensajes del Closer) se disuelve al pasar por debajo; sin rectángulo de blur. */
+  --topbar-fade: linear-gradient(to bottom, #ffffff 55%, rgba(255,255,255,0) 100%) !important;
+  background: transparent !important;
+  border-bottom: 1px solid transparent !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+/* Dashboard claro: contenido sólido; topbar con fade Gemini al hacer scroll */
+html.theme-openai body:has(#view-dashboard:not(.hidden)),
+html.theme-openai body:has(#view-dashboard-admin:not(.hidden)) {
+  /* El body rellena el hueco bajo el fade del topbar — mismo violeta = empalme continuo sin scroll */
+  background: hsl(258 60% 97.5%) !important;
+}
+/* Canvas de partículas fuera del dashboard: ensuciaba el tono del bg bajo el fade */
+html.theme-openai body:has(#view-dashboard:not(.hidden)) #bg-canvas,
+html.theme-openai body:has(#view-dashboard-admin:not(.hidden)) #bg-canvas {
+  display: none !important;
+}
+html.theme-openai body:has(#view-dashboard:not(.hidden)) .topbar,
+html.theme-openai body:has(#view-dashboard-admin:not(.hidden)) .topbar {
+  /* Sólido arriba → transparente abajo (en ::before); el fondo se disuelve al pasar por debajo */
+  --topbar-fade: linear-gradient(to bottom, hsl(258 60% 97.5%) 55%, hsl(258 60% 97.5% / 0) 100%) !important;
+  background: transparent !important;
+  border-bottom: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html.theme-openai body:has(#view-dashboard:not(.hidden)) .content-area,
+html.theme-openai body:has(#view-dashboard-admin:not(.hidden)) .content-area {
+  /* Empalma con el --background violeta-tinted del dashboard (.light) */
+  background: hsl(258 60% 97.5%) !important;
+  border-bottom: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+html.theme-openai #sidebar-toggle {
+  color: #9ca3af !important;
+}
+html.theme-openai #sidebar-toggle:hover {
+  color: #4b5563 !important;
+  background: rgba(0,0,0,0.04) !important;
+}
+html.theme-openai #auth-modal .card {
+  backdrop-filter: blur(20px) saturate(1.15) !important;
+  -webkit-backdrop-filter: blur(20px) saturate(1.15) !important;
+  background: rgba(255,255,255,0.92) !important;
+}
+
+/* ── Playbook — legible en blanco (antes gris claro sobre gris claro) ── */
+html.theme-openai #strategy-content .bg-secondary\/10,
+html.theme-openai #strategy-content .bg-secondary\/20,
+html.theme-openai #analysis-result-container .bg-secondary\/10,
+html.theme-openai #analysis-result-container .bg-secondary\/20 {
+  background: #ffffff !important;
+  border: 1px solid #e5e7eb !important;
+  box-shadow: 0 1px 4px rgba(0,0,0,0.04) !important;
+}
+html.theme-openai #strategy-content .text-white,
+html.theme-openai #analysis-result-container .text-white { color: #0d0d0d !important; }
+html.theme-openai #strategy-content .text-gray-300,
+html.theme-openai #analysis-result-container .text-gray-300 { color: #374151 !important; }
+html.theme-openai #strategy-content .text-gray-400,
+html.theme-openai #analysis-result-container .text-gray-400 { color: #6e6e6e !important; }
+html.theme-openai #strategy-content .border-white\/5,
+html.theme-openai #analysis-result-container .border-white\/5 { border-color: #e5e7eb !important; }
+html.theme-openai #strategy-content .text-primary,
+html.theme-openai #analysis-result-container .text-primary { color: #6d28d9 !important; }
+html.theme-openai #strategy-content .bg-primary\/5,
+html.theme-openai #analysis-result-container .bg-primary\/5 { background: #f5f3ff !important; border-color: #ddd6fe !important; }
+
+/* ── Interaction polish — skill checklist ── */
+html.theme-openai button, html.theme-openai a, html.theme-openai [role="button"] { cursor: pointer !important; }
+html.theme-openai .card, html.theme-openai .btn, html.theme-openai .nav-item, html.theme-openai .input {
+  transition: all 200ms ease !important;
+}
+html.theme-openai .btn:focus-visible, html.theme-openai .input:focus-visible, html.theme-openai .nav-item:focus-visible {
+  outline: 2px solid #8b5cf6 !important; outline-offset: 2px !important; box-shadow: 0 0 0 4px rgba(139,92,246,0.15) !important;
+}
+html.theme-openai .card:focus-within { border-color: #8b5cf6 !important; }
+@media (prefers-reduced-motion: reduce) {
+  html.theme-openai *, html.theme-openai *::before, html.theme-openai *::after {
+    animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important;
+  }
+  html.theme-openai #bg-canvas { display: none !important; }
+}
+/* responsive — ensure no horizontal scroll, viewport safe */
+html.theme-openai body { overflow-x: hidden !important; }
+html.theme-openai img, html.theme-openai canvas, html.theme-openai video { max-width: 100%; height: auto; }
+
+/* Scrollbar del navegador — neutro sutil en tema claro */
+html.theme-openai {
+  scrollbar-color: rgba(0, 0, 0, 0.18) transparent;
+}
+html.theme-openai::-webkit-scrollbar-thumb {
+  background: rgba(0, 0, 0, 0.18);
+}
+html.theme-openai::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 0, 0, 0.3);
+}

@@ -1,0 +1,140 @@
+- generic [ref=f17e2]:
+  - navigation [ref=f17e4]:
+    - link "GRΛVITY SYMBIOSIS" [ref=f17e5] [cursor=pointer]:
+      - /url: "#"
+      - generic [ref=f17e6]: GRΛVITY
+      - generic [ref=f17e7]: SYMBIOSIS
+    - list [ref=f17e8]:
+      - listitem [ref=f17e9]:
+        - link "Problema" [ref=f17e10] [cursor=pointer]:
+          - /url: "#problem"
+      - listitem [ref=f17e11]:
+        - link "Módulos" [ref=f17e12] [cursor=pointer]:
+          - /url: "#modules"
+      - listitem [ref=f17e13]:
+        - link "Symbiosis" [ref=f17e14] [cursor=pointer]:
+          - /url: "#symbiosis"
+      - listitem [ref=f17e15]:
+        - link "Precio" [ref=f17e16] [cursor=pointer]:
+          - /url: "#pricing"
+    - generic [ref=f17e17]:
+      - link "Iniciar Sesión" [ref=f17e18] [cursor=pointer]:
+        - /url: /login
+      - link "Solicitar Demo" [ref=f17e19]:
+        - /url: /request-demo
+  - main [ref=f17e20]:
+    - generic [ref=f17e21]:
+      - generic [ref=f17e22]: ── Sistema 360 & Coach de entrenamiento en tiempo real──
+      - heading "VENDE MÁS VENDE MEJOR MÁS RÁPIDO VENDE AHORA" [level=1] [ref=f17e23]:
+        - generic [ref=f17e24]: VENDE MÁS
+        - generic [ref=f17e25]: VENDE MEJOR MÁS RÁPIDO
+        - text: VENDE AHORA
+      - paragraph [ref=f17e26]:
+        - text: La IA que
+        - strong [ref=f17e27]: entrena, acompaña y eleva
+        - text: a tu equipo comercial en tiempo real. Reduce el tiempo de onboarding, elimina la rotación y multiplica los cierres.
+      - generic [ref=f17e28]:
+        - link "Empezar Piloto" [ref=f17e29]:
+          - /url: "#cta"
+        - link "Ver Plataforma" [ref=f17e30]:
+          - /url: "#modules"
+      - generic [ref=f17e31]:
+        - generic [ref=f17e32]:
+          - generic [ref=f17e33]: 70%
+          - generic [ref=f17e34]: Rotación Eliminada
+        - generic [ref=f17e36]:
+          - generic [ref=f17e37]: 3X
+          - generic [ref=f17e38]: Más Cierres
+        - generic [ref=f17e40]:
+          - generic [ref=f17e41]: "-80%"
+          - generic [ref=f17e42]: Tiempo de Rampa
+      - generic [ref=f17e43]: SCROLL
+    - generic [ref=f17e46]:
+      - generic [ref=f17e47]:
+        - generic [ref=f17e48]: // El problema que resolvemos
+        - heading "TU FUERZA DE VENTAS ESTÁ PERDIENDO DINERO." [level=2] [ref=f17e49]: TU FUERZA DE VENTASESTÁ PERDIENDODINERO.
+      - generic [ref=f17e50]:
+        - generic [ref=f17e51]:
+          - generic [ref=f17e52]: 70%
+          - generic [ref=f17e53]: Alta Rotación Comercial
+          - paragraph [ref=f17e54]: Cada vendedor que se va lleva contigo meses de capacitación invertida.
+        - generic [ref=f17e55]:
+          - generic [ref=f17e56]: 6M+
+          - generic [ref=f17e57]: Meses de Aprendizaje
+          - paragraph [ref=f17e58]: Un vendedor nuevo tarda entre 4 y 9 meses en alcanzar su rendimiento óptimo.
+        - generic [ref=f17e59]:
+          - generic [ref=f17e60]: 0%
+          - generic [ref=f17e61]: Entrenamiento con Impacto Real
+          - paragraph [ref=f17e62]: Los métodos tradicionales no funcionan. Los cursos se olvidan.
+    - generic [ref=f17e63]:
+      - generic [ref=f17e64]:
+        - generic [ref=f17e65]:
+          - generic [ref=f17e66]: // Sistema Completo
+          - heading "LOS MÓDULOS" [level=2] [ref=f17e67]: LOSMÓDULOS
+        - paragraph [ref=f17e68]: Gravity es un ecosistema de entrenamiento donde cada módulo cumple un rol específico en el ciclo de performance del vendedor.
+      - generic [ref=f17e69]:
+        - generic [ref=f17e70]:
+          - generic [ref=f17e71]: 🎯
+          - generic [ref=f17e72]: Módulo 01
+          - generic [ref=f17e73]: CLOSER
+        - generic [ref=f17e74]:
+          - generic [ref=f17e75]: 🎙️
+          - generic [ref=f17e76]: Módulo 02
+          - generic [ref=f17e77]: ENTRENADOR
+        - generic [ref=f17e78]:
+          - generic [ref=f17e79]: 👁️
+          - generic [ref=f17e80]: Módulo 03
+          - generic [ref=f17e81]: SHADOW
+        - generic [ref=f17e82]:
+          - generic [ref=f17e83]: 🧠
+          - generic [ref=f17e84]: Módulo 04
+          - generic [ref=f17e85]: BIENESTAR
+        - generic [ref=f17e86]:
+          - generic [ref=f17e87]: 📚
+          - generic [ref=f17e88]: Módulo 05
+          - generic [ref=f17e89]: CONOCIMIENTO
+        - generic [ref=f17e90]:
+          - generic [ref=f17e91]: 📊
+          - generic [ref=f17e92]: Módulo 06
+          - generic [ref=f17e93]: ANALYTICS
+    - generic [ref=f17e95]:
+      - generic [ref=f17e96]: // La gran diferencia
+      - heading "LA SYMBIOSIS IA–VENDEDOR" [level=2] [ref=f17e97]: LASYMBIOSISIA–VENDEDOR
+      - paragraph [ref=f17e98]: La IA de Gravity no solo enseña. Vive dentro del flujo de trabajo del vendedor.
+    - generic [ref=f17e99]:
+      - generic [ref=f17e100]:
+        - generic [ref=f17e101]: // Modelo SaaS B2B
+        - heading "PRICING SIMPLE" [level=2] [ref=f17e102]: PRICINGSIMPLE
+      - generic [ref=f17e103]:
+        - generic [ref=f17e104]:
+          - generic [ref=f17e105]: Pro
+          - generic [ref=f17e106]: $25
+          - generic [ref=f17e107]: por usuario / mes
+          - link "Iniciar Pro" [ref=f17e108]:
+            - /url: "#"
+        - generic [ref=f17e109]:
+          - text: POPULAR
+          - generic [ref=f17e110]: Max
+          - generic [ref=f17e111]: $50
+          - generic [ref=f17e112]: por usuario / mes · anual
+          - link "Contratar Ahora" [ref=f17e113]:
+            - /url: "#"
+        - generic [ref=f17e114]:
+          - generic [ref=f17e115]: Enterprise
+          - generic [ref=f17e116]: Custom
+          - generic [ref=f17e117]: contrato anual
+          - link "Hablar con Ventas" [ref=f17e118]:
+            - /url: "#"
+  - generic [ref=f17e119]:
+    - link "↑ VOLVER AL INICIO" [ref=f17e120] [cursor=pointer]:
+      - /url: "#"
+    - generic [ref=f17e121]:
+      - link "Privacidad" [ref=f17e122] [cursor=pointer]:
+        - /url: "#"
+      - link "Términos" [ref=f17e123] [cursor=pointer]:
+        - /url: "#"
+      - link "Blog" [ref=f17e124] [cursor=pointer]:
+        - /url: "#"
+      - link "Contacto" [ref=f17e125] [cursor=pointer]:
+        - /url: "#"
+    - generic [ref=f17e126]: © 2025 Gravity AI · B2B SaaS

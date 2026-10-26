@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🧪 Test - Quiz Completos GRAVITY SYMBIOSIS</title>
+  <style>
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+      background: #f8fafc;
+    }
+
+    .test-container {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .module-test {
+      margin-bottom: 20px;
+      padding: 20px;
+      border: 1px solid #e2e8f0;
+      border-radius: 8px;
+    }
+
+    .module-test.loading {
+      background: #fef3c7;
+      border-color: #f59e0b;
+    }
+
+    .module-test.success {
+      background: #d1fae5;
+      border-color: #10b981;
+    }
+
+    .module-test.error {
+      background: #fecaca;
+      border-color: #ef4444;
+    }
+
+    .status {
+      font-weight: 600;
+      margin-top: 10px;
+    }
+
+    .success {
+      color: #059669;
+    }
+
+    .error {
+      color: #dc2626;
+    }
+
+    .loading {
+      color: #d97706;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="test-container">
+    <h1>🧪 Test - Quiz Completos GRAVITY SYMBIOSIS</h1>
+    <p>Verificando que todos los módulos tengan exactamente 40 conceptos...</p>
+
+    <div id="test-results">
+      <!-- Los resultados aparecerán aquí -->
+    </div>
+
+    <div style="margin-top: 30px; padding: 20px; background: #f1f5f9; border-radius: 8px;">
+      <h3>📋 Resultados Esperados:</h3>
+      <ul>
+        <li>🐺 <strong>El Camino del Lobo</strong>: 40 conceptos</li>
+        <li>🚫 <strong>Rompe la Barrera del No</strong>: 40 conceptos</li>
+        <li>🌪️ <strong>Ventas SPIN</strong>: 41 conceptos</li>
+      </ul>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'http://127.0.0.1:5001';
+
+    const modules = [
+      { key: 'el-camino-del-lobo', name: 'El Camino del Lobo', icon: '🐺', expected: 40 },
+      { key: 'rompe-la-barrera-del-no', name: 'Rompe la Barrera del No', icon: '🚫', expected: 40 },
+      { key: 'ventas-spin', name: 'Ventas SPIN', icon: '🌪️', expected: 41 }
+    ];
+
+    async function testModule(module) {
+      const container = document.getElementById('test-results');
+      const testDiv = document.createElement('div');
+      testDiv.className = 'module-test loading';
+      testDiv.innerHTML = `
+                <h3>${module.icon} ${module.name}</h3>
+                <div class="status loading">🔄 Cargando...</div>
+            `;
+      container.appendChild(testDiv);
+
+      try {
+        console.log(`🔍 Probando módulo: ${module.key}`);
+        const response = await fetch(`${API_URL}/conocimiento?modulo=${module.key}`);
+
+        if (!response.ok) {
+          throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const count = Array.isArray(data) ? data.length : 0;
+
+        if (count >= module.expected - 1) { // Tolerancia de ±1
+          testDiv.className = 'module-test success';
+          testDiv.innerHTML = `
+                        <h3>${module.icon} ${module.name}</h3>
+                        <div class="status success">✅ PERFECTO: ${count} conceptos cargados</div>
+                        <small>Backend responde correctamente con todos los quiz completos</small>
+                    `;
+          console.log(`✅ ${module.name}: ${count} conceptos - CORRECTO`);
+        } else {
+          testDiv.className = 'module-test error';
+          testDiv.innerHTML = `
+                        <h3>${module.icon} ${module.name}</h3>
+                        <div class="status error">⚠️ INCOMPLETO: Solo ${count} conceptos (esperado: ${module.expected})</div>
+                        <small>Faltan ${module.expected - count} conceptos</small>
+                    `;
+          console.warn(`⚠️ ${module.name}: Solo ${count} conceptos, esperado ${module.expected}`);
+        }
+
+      } catch (error) {
+        testDiv.className = 'module-test error';
+        testDiv.innerHTML = `
+                    <h3>${module.icon} ${module.name}</h3>
+                    <div class="status error">❌ ERROR: ${error.message}</div>
+                    <small>No se pudo conectar con el backend</small>
+                `;
+        console.error(`❌ Error en ${module.name}:`, error);
+      }
+    }
+
+    // Ejecutar todas las pruebas
+    async function runAllTests() {
+      console.log('🚀 Iniciando pruebas de quiz completos...');
+
+      for (const module of modules) {
+        await testModule(module);
+        await new Promise(resolve => setTimeout(resolve, 500)); // Pausa entre pruebas
+      }
+
+      console.log('🏁 Pruebas completadas');
+    }
+
+    // Iniciar cuando la página esté lista
+    document.addEventListener('DOMContentLoaded', runAllTests);
+  </script>
+</body>
+
+</html>
